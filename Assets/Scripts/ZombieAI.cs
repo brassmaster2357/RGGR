@@ -5,15 +5,17 @@ using UnityEngine;
 public class ZombieAI : MonoBehaviour
 {
     GameObject target;
+    PlayerController player;
     Rigidbody2D myRB;
     public float speed;
-    int health;
+    public int health;
+    public int damage;
 
     private void Start()
     {
         target = GameObject.Find("Player");
         myRB = GetComponent<Rigidbody2D>();
-        health = 3;
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     private void Update()
     {
@@ -26,6 +28,8 @@ public class ZombieAI : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             health -= 1;
+            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            myRB.AddForce(force.normalized * force.magnitude * player.knockback);
             Destroy(collision.gameObject);
         }
     }
@@ -33,7 +37,7 @@ public class ZombieAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().Damage(1);
+            player.Damage(damage);
         }
     }
 }
