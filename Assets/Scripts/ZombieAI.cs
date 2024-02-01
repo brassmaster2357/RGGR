@@ -29,4 +29,11 @@ public class ZombieAI : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerController>().Damage(1);
+        }
+    }
 }
