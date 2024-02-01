@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XInput;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
+    public Image healthBar;
+    public Image pickupIndicator;
 
     public float maxSpeed = 5f;
     public float cooldownBase = 0.25f;
     public float bulletVelocity = 1000;
+    public int health = 6;
 
     public float cooldown = 0.25f;
     public float deadzone = 0.1f;
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         controller = UnityEngine.InputSystem.Gamepad.current;
+        healthBar = GameObject.Find("Health Bar").GetComponent<Image>();
+        pickupIndicator.enabled = false;
     }
 
 
@@ -64,21 +69,54 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("wow");
         }
+        if (controller.bButton.wasPressedThisFrame)
+        {
+            health--;
+            Debug.Log(health);
+        }
 
         // time related stuff
+        if (health <= 0)
+        {
+            Debug.Log("YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD");
+        }
         if (playerNotActivelyMoving)
         {
             rb.velocity *= 0.9f; // only apply friction when the player isn't adding velocity, otherwise their max speed is actually 90% of their real max speed
         }
         cooldown -= Time.deltaTime;
+        healthBar.rectTransform.sizeDelta = new(health * 50, 100);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Pickup") && controller.aButton.isPressed)
+        if (collision.gameObject.CompareTag("Pickup"))
         {
-            Debug.Log(collision.gameObject.name);
-            Destroy(collision.gameObject);
+            pickupIndicator.enabled = true;
+            if (controller.aButton.isPressed)
+            {
+                Debug.Log(collision.gameObject.name);
+                Destroy(collision.gameObject);
+            }
+        }
+        else
+            pickupIndicator.enabled = false;
+        if (collision.gameObject.CompareTag("InstantPickup"))
+        {
+            if (collision.gameObject.name.Contains("Heart"))
+            {
+                health++;
+                Debug.Log("get healthed");
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Pickup"))
+        {
+            pickupIndicator.enabled = false;
         }
     }
 }
