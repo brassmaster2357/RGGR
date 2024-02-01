@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - InstantPickup
+  - Projectile
   layers:
   - Default
   - TransparentFX
