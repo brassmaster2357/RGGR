@@ -16,7 +16,11 @@ public class PlayerController : MonoBehaviour
     public float maxSpeed = 5f;
     public float cooldownBase = 0.25f;
     public float bulletVelocity = 1000;
+    public int healthMax = 6;
+    public float invulMax = 1;
+
     public int health = 6;
+    public float invul = 0;
 
     public float cooldown = 0.25f;
     public float deadzone = 0.1f;
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity *= 0.9f; // only apply friction when the player isn't adding velocity, otherwise their max speed is actually 90% of their real max speed
         }
         cooldown -= Time.deltaTime;
+        invul -= Time.deltaTime;
         healthBar.rectTransform.sizeDelta = new(health * 50, 100);
     }
 
@@ -117,6 +122,15 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Pickup"))
         {
             pickupIndicator.enabled = false;
+        }
+    }
+
+    public void Damage(int damage)
+    {
+        if (invul <= 0)
+        {
+            health -= damage;
+            invul = 1;
         }
     }
 }
