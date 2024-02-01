@@ -13,18 +13,22 @@ public class ZombieAI : MonoBehaviour
 
     private void Start()
     {
+        //initialize vars
         target = GameObject.Find("Player");
+        player = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     private void Update()
     {
+        //add force to go towards the player
         myRB.AddForce((target.transform.position - transform.position).normalized * speed);
+        //if out of health, die
         if (health <= 0)
             Destroy(this.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if collide with bullet, take damage and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
             health -= 1;
@@ -35,6 +39,7 @@ public class ZombieAI : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //if collide with player, deal damage
         if (collision.gameObject.tag == "Player")
         {
             player.Damage(damage);
