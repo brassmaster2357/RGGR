@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     public Vector2 velocity;
     public GameObject bullet;
     public Image healthBar;
+    public Image healthBarEmpty;
     public Image pickupIndicator;
     public CinemachineVirtualCamera cam;
 
     public float maxSpeed = 5f;
+    public int maxHealth = 6;
     public float cooldownBase = 0.25f;
     public float bulletVelocity = 1000;
     public int healthMax = 6;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 camPos;
     public float deadzone = 0.1f;
+    public Vector2 healthBarPosition = new(40, -25);
 
     void Start()
     {
@@ -36,11 +39,14 @@ public class PlayerController : MonoBehaviour
         healthBar = GameObject.Find("Health Bar").GetComponent<Image>();
         camPos = cam.transform.position;
         pickupIndicator.enabled = false;
+        healthBarEmpty.rectTransform.sizeDelta = new(healthMax * 50, 100);
     }
 
 
     void Update()
     {
+        if (controller == null)
+            controller = UnityEngine.InputSystem.Gamepad.current;
         bool playerNotActivelyMoving = true;
 
         // left stick (movement)
@@ -96,6 +102,13 @@ public class PlayerController : MonoBehaviour
         cooldown -= Time.deltaTime;
         invul -= Time.deltaTime;
         healthBar.rectTransform.sizeDelta = new(health * 50, 100);
+        if (health <= 2)
+        {
+            healthBarPosition.x += Random.Range(-3, 3);
+            healthBarPosition.y += Random.Range(-3, 3);
+            healthBar.rectTransform.anchoredPosition = healthBarPosition;
+            healthBarPosition = new(40, -25);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -113,7 +126,7 @@ public class PlayerController : MonoBehaviour
             pickupIndicator.enabled = false;
         if (collision.gameObject.CompareTag("InstantPickup"))
         {
-            if (collision.gameObject.name.Contains("Heart"))
+            if (collision.gameObject.name.Contains("Heart") && health < maxHealth)
             {
                 health++;
                 Debug.Log("get healthed");
@@ -134,7 +147,7 @@ public class PlayerController : MonoBehaviour
     {
         if (invul <= 0)
         {
-            StartCoroutine(CameraShake(0.1f, 0.9f));
+            StartCoroutine(CameraShake(0.1f * damage, Mathf.Pow(0.9f,damage)));
             health -= damage;
             invul = 1;
         }
