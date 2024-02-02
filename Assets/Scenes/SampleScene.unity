@@ -301,7 +301,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -747,6 +747,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1606178540 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7439659866596262634, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
+  m_PrefabInstance: {fileID: 3869904703726937893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1856504596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -965,6 +976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7147039968239659066, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -994,6 +1009,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1501439076}
+    - target: {fileID: 8191744590608488043, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
+      propertyPath: healthBarEmpty
+      value: 
+      objectReference: {fileID: 1606178540}
     - target: {fileID: 8191744590608488047, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1098,6 +1117,10 @@ PrefabInstance:
     - target: {fileID: 9067562943536536242, guid: 6bb242d08b8d49f47b15c81c97091238, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9067562943536536243, guid: 6bb242d08b8d49f47b15c81c97091238, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9067562943536536252, guid: 6bb242d08b8d49f47b15c81c97091238, type: 3}
       propertyPath: m_Name
