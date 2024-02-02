@@ -26,7 +26,7 @@ public class MummyAI : MonoBehaviour
         chaseTime = 2;
         charging = false;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //The mummy has two states: charging and chasing. while chasing, it works just like a zombie. while charging, it pauses, then lunges at the player
         if (charging)

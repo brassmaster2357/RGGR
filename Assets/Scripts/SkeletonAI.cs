@@ -41,7 +41,7 @@ public class SkeletonAI : MonoBehaviour
             distTrack = 0;
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //dont run this code in sentry mode
         if (waypoints.Count >= 2)
