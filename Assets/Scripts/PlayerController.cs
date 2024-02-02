@@ -143,6 +143,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Arrow")
+        {
+            Damage(1);
+        }
+    }
+
     public void Damage(int damage)
     {
         if (invul <= 0)

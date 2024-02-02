@@ -7,11 +7,12 @@ TagManager:
   - Pickup
   - InstantPickup
   - Projectile
+  - Arrow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemies
   - Water
   - UI
   - 
