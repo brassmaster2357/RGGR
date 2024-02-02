@@ -7,24 +7,31 @@ public class SkeletonAI : MonoBehaviour
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
+
+    // Set waypoints in inspector to set patrol, leave empty for sentry mode
     public List<Vector2> waypoints;
     int currentWaypoint;
     float distance;
     float distTrack;
     Vector2 direction;
+
     float timer;
     public float fireRate;
     public float projSpeed;
     public GameObject projectile;
+
     public int health;
     public float speed;
 
     private void Start()
     {
+        // initialize vars
         target = GameObject.Find("Player");
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
         timer = 0;
+
+        //only initialize these if the skeleton has places to go
         if (waypoints.Count >= 2)
         {
             transform.position = waypoints[0];
@@ -36,20 +43,27 @@ public class SkeletonAI : MonoBehaviour
     }
     private void Update()
     {
+        //dont run this code in sentry mode
         if (waypoints.Count >= 2)
         {
+            // move and keep track of the distance moved to the next waypoint
             transform.position += (Vector3)(direction * Time.deltaTime * speed);
-            distTrack = Vector2.Distance(transform.position, waypoints[NewWaypoint(false, currentWaypoint)]);
+            distTrack = Vector2.Distance(transform.position, waypoints[NewWaypoint(false)]);
+
+            //when you reach a waypoint, change to the next one and reset some variables
             if (distTrack >= distance)
             {
-                currentWaypoint = NewWaypoint(true, currentWaypoint);
+                currentWaypoint = NewWaypoint(true);
                 distance = Vector2.Distance(transform.position, waypoints[currentWaypoint]);
                 direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
                 distTrack = 0;
             }
         }
+        // if dead, die
         if (health <= 0)
             Destroy(this.gameObject);
+
+        // shooting timer
         if (timer < fireRate)
             timer += Time.deltaTime;
         else
@@ -60,7 +74,7 @@ public class SkeletonAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if collide with bullet, take damage and destory bullet
+        //if collide with bullet, take damage, get knocked back and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
             health -= 1;
@@ -69,29 +83,32 @@ public class SkeletonAI : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
     void Shoot()
     {
+        // make an arrow, rotate it, and send it
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0,0,angle);
         arrow.GetComponent<Rigidbody2D>().velocity = arrow.transform.up * projSpeed;
         Destroy(arrow, 1);
     }
-    int NewWaypoint(bool way, int point)
+    int NewWaypoint(bool next)
     {
-        if (way)
+        // like a double looped linked list
+        if (next)
         {
-            if (point == waypoints.Count - 1)
+            if (currentWaypoint == waypoints.Count - 1)
                 return 0;
             else
-                return point + 1;
+                return currentWaypoint + 1;
         }
         else
         {
-            if (point == 0)
+            if (currentWaypoint == 0)
                 return waypoints.Count - 1;
             else
-                return point - 1;
+                return currentWaypoint - 1;
         }
     }
 }

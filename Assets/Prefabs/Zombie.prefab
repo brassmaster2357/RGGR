@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 3
+  health: 5
   damage: 1
 --- !u!50 &7617203449426593272
 Rigidbody2D:

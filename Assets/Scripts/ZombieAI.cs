@@ -7,6 +7,7 @@ public class ZombieAI : MonoBehaviour
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
+
     public float speed;
     public int health;
     public int damage;
@@ -22,7 +23,7 @@ public class ZombieAI : MonoBehaviour
     {
         //add force to go towards the player
         myRB.AddForce((target.transform.position - transform.position).normalized * speed);
-        //if out of health, die
+        //if dead, die
         if (health <= 0)
             Destroy(this.gameObject);
     }
@@ -33,7 +34,7 @@ public class ZombieAI : MonoBehaviour
         {
             health -= 1;
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force.normalized * force.magnitude * player.knockback);
+            myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
         }
     }
