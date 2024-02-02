@@ -328,6 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546c9fe3b46a4aa4085de437c6ffaa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 3869904704951534401}
+  healthBarEmpty: {fileID: 7439659866596262634}
+  moneyText: {fileID: 7147039968239659066}
+  pc: {fileID: 0}
 --- !u!1 &4571424991942008745
 GameObject:
   m_ObjectHideFlags: 0
