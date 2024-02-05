@@ -120,20 +120,27 @@ public class PlayerController : MonoBehaviour
             if (aButton)
             {
                 Debug.Log(collision.gameObject.name);
-                cash += Random.Range(10f, 100f);
+                cash += Random.Range(50f, 250f);
                 Destroy(collision.gameObject);
             }
         }
         else
             pickupIndicator.enabled = false;
-        if (collision.gameObject.CompareTag("InstantPickup"))
+        if (collision.gameObject.CompareTag("Heart"))
         {
-            if (collision.gameObject.name.Contains("Heart") && health < maxHealth)
+            if (health < maxHealth)
             {
                 health++;
                 Debug.Log("get healthed");
                 Destroy(collision.gameObject);
             }
+        }
+        if (collision.gameObject.CompareTag("Money"))
+        {
+            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
+            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
+            Debug.Log("get moneyed");
+            Destroy(collision.gameObject);
         }
     }
 
