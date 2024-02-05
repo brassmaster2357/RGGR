@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,10 +12,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
-    public Image healthBar;
-    public Image healthBarEmpty;
     public Image pickupIndicator;
     public CinemachineVirtualCamera cam;
+    public GameManager gm;
 
     public float maxSpeed = 5f;
     public int maxHealth = 6;
@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
     public float invul = 0;
     public float knockback = 0.5f;
     public float cooldown = 0.25f;
+    public float cash = 0;
 
     public Vector3 camPos;
     public float deadzone = 0.1f;
-    public Vector2 healthBarPosition = new(40, -25);
 
     public Vector2 leftStick;
     public Vector2 rightStick;
@@ -40,13 +40,11 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         controller = UnityEngine.InputSystem.Gamepad.current;
-        healthBar = GameObject.Find("Health Bar").GetComponent<Image>();
         camPos = cam.transform.position;
         pickupIndicator.enabled = false;
-        healthBarEmpty.rectTransform.sizeDelta = new(healthMax * 50, 100);
     }
 
-    private void Update()
+    void Update()
     {
         // Update is being used to capture inputs ASAP
         if (controller.leftStick.ReadValue().magnitude > deadzone)
@@ -63,15 +61,18 @@ public class PlayerController : MonoBehaviour
             aButton = true;
         else
             aButton = false;
+        if (controller.startButton.wasPressedThisFrame)
+            gm.PressedPauseButton();
     }
 
     void FixedUpdate()
     {
+        // Miscellaneous stuff
         if (controller == null)
             controller = UnityEngine.InputSystem.Gamepad.current;
         bool playerNotActivelyMoving = true;
 
-        // left stick (movement)
+        // Left stick (movement)
         if (leftStick.magnitude > deadzone)
         {
             velocity = leftStick;
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // right stick (shooting)
+        // Right stick (shooting)
         if (rightStick.magnitude > deadzone)
         {
             if (cooldown <= 0)
@@ -96,10 +97,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // time related stuff
+        // Time related stuff
         if (health <= 0)
         {
             Debug.Log("YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD");
+            gm.ReturnToMenu();
         }
         if (playerNotActivelyMoving)
         {
@@ -107,14 +109,7 @@ public class PlayerController : MonoBehaviour
         }
         cooldown -= Time.deltaTime;
         invul -= Time.deltaTime;
-        healthBar.rectTransform.sizeDelta = new(health * 50, 100);
-        if (health <= 2)
-        {
-            healthBarPosition.x += Random.Range(-6 / health, 6 / health);
-            healthBarPosition.y += Random.Range(-6 / health, 6 / health);
-            healthBar.rectTransform.anchoredPosition = healthBarPosition;
-            healthBarPosition = new(40, -25);
-        }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -125,6 +120,7 @@ public class PlayerController : MonoBehaviour
             if (aButton)
             {
                 Debug.Log(collision.gameObject.name);
+                cash += Random.Range(10f, 100f);
                 Destroy(collision.gameObject);
             }
         }
