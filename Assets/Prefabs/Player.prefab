@@ -337,7 +337,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8191744590608488043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,10 +354,19 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   bullet: {fileID: 2034341846564913712, guid: 99324cfd4b940eb40ba312591e4414aa, type: 3}
   healthBar: {fileID: 0}
+  healthBarEmpty: {fileID: 0}
   pickupIndicator: {fileID: 8942762899153518352}
+  cam: {fileID: 0}
   maxSpeed: 5
+  maxHealth: 6
   cooldownBase: 0.25
   bulletVelocity: 1000
+  healthMax: 6
+  invulMax: 1
   health: 6
+  invul: 0
+  knockback: 0.5
   cooldown: 0.25
+  camPos: {x: 0, y: 0, z: 0}
   deadzone: 0.1
+  healthBarPosition: {x: 40, y: -25}

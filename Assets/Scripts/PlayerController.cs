@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,10 +12,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
-    public Image healthBar;
-    public Image healthBarEmpty;
     public Image pickupIndicator;
     public CinemachineVirtualCamera cam;
+    public GameManager gm;
 
     public float maxSpeed = 5f;
     public int maxHealth = 6;
@@ -27,33 +27,55 @@ public class PlayerController : MonoBehaviour
     public float invul = 0;
     public float knockback = 0.5f;
     public float cooldown = 0.25f;
+    public float cash = 0;
 
     public Vector3 camPos;
     public float deadzone = 0.1f;
-    public Vector2 healthBarPosition = new(40, -25);
+
+    public Vector2 leftStick;
+    public Vector2 rightStick;
+    public bool aButton;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         controller = UnityEngine.InputSystem.Gamepad.current;
-        healthBar = GameObject.Find("Health Bar").GetComponent<Image>();
         camPos = cam.transform.position;
         pickupIndicator.enabled = false;
-        healthBarEmpty.rectTransform.sizeDelta = new(healthMax * 50, 100);
     }
-
 
     void Update()
     {
+        // Update is being used to capture inputs ASAP
+        if (controller.leftStick.ReadValue().magnitude > deadzone)
+            leftStick = controller.leftStick.ReadValue();
+        else
+            leftStick = new(0, 0);
+
+        if (controller.rightStick.ReadValue().magnitude > deadzone)
+            rightStick = controller.rightStick.ReadValue();
+        else
+            rightStick = new(0, 0);
+
+        if (controller.aButton.isPressed)
+            aButton = true;
+        else
+            aButton = false;
+        if (controller.startButton.wasPressedThisFrame)
+            gm.PressedPauseButton();
+    }
+
+    void FixedUpdate()
+    {
+        // Miscellaneous stuff
         if (controller == null)
             controller = UnityEngine.InputSystem.Gamepad.current;
         bool playerNotActivelyMoving = true;
 
-        // left stick (movement)
-        if (controller.leftStick.ReadValue().magnitude > deadzone)
+        // Left stick (movement)
+        if (leftStick.magnitude > deadzone)
         {
-            Vector2 stick = controller.leftStick.ReadValue();
-            velocity = stick;
+            velocity = leftStick;
             if (rb.velocity.magnitude < maxSpeed)
             {
                 rb.AddForce(velocity * 100);
@@ -61,39 +83,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // right stick (shooting)
-        if (controller.rightStick.ReadValue().magnitude > deadzone)
+        // Right stick (shooting)
+        if (rightStick.magnitude > deadzone)
         {
-            Vector2 stick = controller.rightStick.ReadValue();
             if (cooldown <= 0)
             {
                 cooldown = cooldownBase;
                 GameObject b = Instantiate(bullet, transform);
                 b.transform.position = transform.position;
                 Physics2D.IgnoreCollision(b.GetComponent<CircleCollider2D>(), GetComponent<BoxCollider2D>());
-                b.GetComponent<Rigidbody2D>().AddForce(stick * (1 / stick.magnitude) * bulletVelocity);
+                b.GetComponent<Rigidbody2D>().AddForce((1 / rightStick.magnitude) * bulletVelocity * rightStick);
                 Destroy(b, 1);
             }
         }
 
-        if (controller.aButton.wasPressedThisFrame)
-        {
-            Debug.Log("woah");
-        }
-        if (controller.aButton.wasReleasedThisFrame)
-        {
-            Debug.Log("wow");
-        }
-        if (controller.bButton.wasPressedThisFrame)
-        {
-            health--;
-            Debug.Log(health);
-        }
-
-        // time related stuff
+        // Time related stuff
         if (health <= 0)
         {
             Debug.Log("YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD YOU'RE DEAD");
+            gm.ReturnToMenu();
         }
         if (playerNotActivelyMoving)
         {
@@ -101,14 +109,7 @@ public class PlayerController : MonoBehaviour
         }
         cooldown -= Time.deltaTime;
         invul -= Time.deltaTime;
-        healthBar.rectTransform.sizeDelta = new(health * 50, 100);
-        if (health <= 2)
-        {
-            healthBarPosition.x += Random.Range(-3, 3);
-            healthBarPosition.y += Random.Range(-3, 3);
-            healthBar.rectTransform.anchoredPosition = healthBarPosition;
-            healthBarPosition = new(40, -25);
-        }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -116,22 +117,30 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Pickup"))
         {
             pickupIndicator.enabled = true;
-            if (controller.aButton.isPressed)
+            if (aButton)
             {
                 Debug.Log(collision.gameObject.name);
+                cash += Random.Range(50f, 250f);
                 Destroy(collision.gameObject);
             }
         }
         else
             pickupIndicator.enabled = false;
-        if (collision.gameObject.CompareTag("InstantPickup"))
+        if (collision.gameObject.CompareTag("Heart"))
         {
-            if (collision.gameObject.name.Contains("Heart") && health < maxHealth)
+            if (health < maxHealth)
             {
                 health++;
                 Debug.Log("get healthed");
                 Destroy(collision.gameObject);
             }
+        }
+        if (collision.gameObject.CompareTag("Money"))
+        {
+            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
+            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
+            Debug.Log("get moneyed");
+            Destroy(collision.gameObject);
         }
     }
 

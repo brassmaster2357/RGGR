@@ -19,7 +19,7 @@ public class ZombieAI : MonoBehaviour
         player = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //add force to go towards the player
         myRB.AddForce((target.transform.position - transform.position).normalized * speed);
