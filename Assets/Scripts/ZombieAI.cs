@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ZombieAI : MonoBehaviour
 {
+    public GameObject money;
+
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
@@ -45,5 +47,9 @@ public class ZombieAI : MonoBehaviour
         {
             player.Damage(damage);
         }
+    }
+    private void OnDestroy()
+    {
+        Instantiate(money, transform.position, Quaternion.identity);
     }
 }

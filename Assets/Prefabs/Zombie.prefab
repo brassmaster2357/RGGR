@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a7475d3594c774d93da9be7433d9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
+  speed: 9
   health: 5
   damage: 1
 --- !u!50 &7617203449426593272

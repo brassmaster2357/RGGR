@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkeletonAI : MonoBehaviour
 {
+    public GameObject money;
+
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
@@ -110,5 +112,9 @@ public class SkeletonAI : MonoBehaviour
             else
                 return currentWaypoint - 1;
         }
+    }
+    private void OnDestroy()
+    {
+        Instantiate(money, transform.position, Quaternion.identity);
     }
 }

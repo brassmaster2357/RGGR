@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MummyAI : MonoBehaviour
 {
+    public GameObject money;
+
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
@@ -78,5 +80,9 @@ public class MummyAI : MonoBehaviour
         {
             player.Damage(damage);
         }
+    }
+    private void OnDestroy()
+    {
+        Instantiate(money, transform.position, Quaternion.identity);
     }
 }

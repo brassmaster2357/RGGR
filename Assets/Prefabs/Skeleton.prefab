@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b937de1ddd4359d49bc438919caab47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
   waypoints: []
   fireRate: 1
   projSpeed: 10
