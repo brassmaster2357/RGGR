@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 velocity;
     public GameObject bullet;
     public Image pickupIndicator;
-    public CinemachineVirtualCamera cam;
+    public CameraController cam;
     public GameManager gm;
 
     public float maxSpeed = 5f;
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     public float cooldown = 0.25f;
     public float cash = 0;
 
-    public Vector3 camPos;
     public float deadzone = 0.1f;
 
     public Vector2 leftStick;
@@ -39,8 +38,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cam = GameObject.Find("Main Camera").GetComponent<CameraController>();
         controller = UnityEngine.InputSystem.Gamepad.current;
-        camPos = cam.transform.position;
         pickupIndicator.enabled = false;
     }
 
@@ -164,19 +163,9 @@ public class PlayerController : MonoBehaviour
     {
         if (invul <= 0)
         {
-            StartCoroutine(CameraShake(0.1f * damage, Mathf.Pow(0.9f,damage)));
+            cam.InitiateCameraShake(damage);
             health -= damage;
             invul = 1;
-        }
-    }
-
-    private IEnumerator CameraShake(float intensity, float falloff)
-    {
-        while (intensity > 0.001f)
-        {
-            cam.transform.position = new(camPos.x + Random.Range(-intensity, intensity), camPos.y + Random.Range(-intensity, intensity), -10);
-            intensity *= falloff;
-            yield return new WaitForFixedUpdate();
         }
     }
 }
