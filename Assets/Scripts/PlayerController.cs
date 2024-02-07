@@ -8,15 +8,17 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 
-    public UnityEngine.InputSystem.Gamepad controller;
-    public Rigidbody2D rb;
+    private UnityEngine.InputSystem.Gamepad controller;
+    private Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
-    public Image pickupIndicator;
-    public CameraController cam;
-    public GameManager gm;
+    private Image pickupIndicator;
+    private CameraController cam;
+    private GameManager gm;
+    private SpriteRenderer playerSprite;
+    private Color invincibilityFlash = new(1,1,1,1);
 
-    public float maxSpeed = 5f;
+    public float maxSpeed = 8f;
     public int maxHealth = 6;
     public float cooldownBase = 0.25f;
     public float bulletVelocity = 1000;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public int health = 6;
     public float invul = 0;
+    private float rollDelay = 2.5f;
     public float knockback = 0.5f;
     public float cooldown = 0.25f;
     public float cash = 0;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        playerSprite = GetComponent<SpriteRenderer>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
     }
@@ -62,6 +66,8 @@ public class PlayerController : MonoBehaviour
             aButton = false;
         if (controller.startButton.wasPressedThisFrame)
             gm.PressedPauseButton();
+        if (controller.leftStickButton.wasPressedThisFrame)
+            Roll();
     }
 
     void FixedUpdate()
@@ -108,7 +114,12 @@ public class PlayerController : MonoBehaviour
         }
         cooldown -= Time.deltaTime;
         invul -= Time.deltaTime;
-        
+        rollDelay -= Time.deltaTime;
+        if (invul > 0)
+            invincibilityFlash.a = Mathf.Cos(invul * 5 * Mathf.PI) * 0.2f + 0.6f;
+        else
+            invincibilityFlash.a = 1;
+        playerSprite.color = invincibilityFlash;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -143,6 +154,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Roll()
+    {
+        if (rollDelay <= 0)
+        {
+            rb.AddForce(225 * maxSpeed * leftStick.normalized);
+            invul = 0.55f;
+            rollDelay = 2.5f;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pickup"))
@@ -153,7 +174,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Arrow")
+        if (collision.gameObject.CompareTag("Arrow"))
         {
             Damage(1);
         }
