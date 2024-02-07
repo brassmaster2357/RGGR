@@ -8,6 +8,9 @@ TagManager:
   - InstantPickup
   - Projectile
   - Arrow
+  - Money
+  - Heart
+  - Walls
   layers:
   - Default
   - TransparentFX
