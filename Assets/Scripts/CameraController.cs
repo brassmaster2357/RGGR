@@ -5,8 +5,11 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float cameraShake;
-    private float decayRate;
-    private Vector2 posFromPlayer;
+    private Vector3 position;
+    private Vector3 goalPosition;
+
+    private float shakeIntensity;
+    public float shakeFalloff = 0.9f;
 
     public GameObject player;
 
@@ -14,11 +17,23 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        position.z = -10;
+        goalPosition.z = -10;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        posFromPlayer = new(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+        // Follow the player in intervals of 32x20 because Steam Deck
+        goalPosition.x = Mathf.Floor((player.transform.position.x + 16) / 32) * 32;
+        goalPosition.y = Mathf.Floor((player.transform.position.y + 10) / 20) * 20;
+        position = (position * 6 + goalPosition) / 7; // *slowly* go to the real position
+        gameObject.transform.position = new(position.x + Random.Range(-shakeIntensity, shakeIntensity), position.y + Random.Range(-shakeIntensity, shakeIntensity), -10);
+        shakeIntensity *= shakeFalloff;
+    }
+
+    public void InitiateCameraShake(int damage)
+    {
+        shakeIntensity = 0.25f * damage;
     }
 }
