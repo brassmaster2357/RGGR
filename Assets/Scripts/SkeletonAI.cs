@@ -115,6 +115,7 @@ public class SkeletonAI : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded) return;
         Instantiate(money, transform.position, Quaternion.identity);
     }
 }
