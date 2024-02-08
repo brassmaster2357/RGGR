@@ -350,23 +350,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2be4216e355c147b84c900edb7f431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   velocity: {x: 0, y: 0}
   bullet: {fileID: 2034341846564913712, guid: 99324cfd4b940eb40ba312591e4414aa, type: 3}
-  healthBar: {fileID: 0}
-  healthBarEmpty: {fileID: 0}
   pickupIndicator: {fileID: 8942762899153518352}
-  cam: {fileID: 0}
+  gettingModifiers: 0
+  hudControl: {fileID: 0}
   maxSpeed: 5
   maxHealth: 6
   cooldownBase: 0.25
   bulletVelocity: 1000
   healthMax: 6
   invulMax: 1
+  damage: 1
   health: 6
   invul: 0
-  knockback: 0.5
+  knockback: 10
   cooldown: 0.25
-  camPos: {x: 0, y: 0, z: 0}
+  cash: 0
+  moneyMult: 1
   deadzone: 0.1
-  healthBarPosition: {x: 40, y: -25}
+  leftStick: {x: 0, y: 0}
+  rightStick: {x: 0, y: 0}
+  aButton: 0

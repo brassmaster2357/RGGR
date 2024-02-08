@@ -21,8 +21,8 @@ public class SkeletonAI : MonoBehaviour
     public float fireRate;
     public float projSpeed;
     public GameObject projectile;
-    
-    public int health;
+
+    public float health;
     public float speed;
 
     private void Awake()
@@ -79,7 +79,7 @@ public class SkeletonAI : MonoBehaviour
         //if collide with bullet, take damage, get knocked back and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
-            health -= 1;
+            health -= PC.damage;
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
             Destroy(collision.gameObject);
@@ -116,6 +116,7 @@ public class SkeletonAI : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
-        Instantiate(money, transform.position, Quaternion.identity);
+        GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
+        coin.GetComponent<Rigidbody2D>().velocity = new(Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 }

@@ -10,15 +10,30 @@ public class HUDControl : MonoBehaviour
     public Image healthBarEmpty;
     public TextMeshProUGUI moneyText;
     public PlayerController pc;
+    public Canvas poweringUpScreen;
+    private GameManager gm;
+    public StatMod[] modifiers;
+
     private float delayedCash;
     private Vector2 defaultHealthBar = new(40, -25);
     private Vector2 healthBarPosition = new(40, -25);
     private Vector2 defaultMoneyText = new(130, 64);
     private Vector2 moneyTextPosition = new(130, 64);
 
+    public StatMod leftMod;
+    public StatMod rightMod;
+    public Image leftImage;
+    public TextMeshProUGUI leftName;
+    public TextMeshProUGUI leftDesc;
+    public Image rightImage;
+    public TextMeshProUGUI rightName;
+    public TextMeshProUGUI rightDesc;
+
     void Start()
     {
+        poweringUpScreen.enabled = false;
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        gm = GameObject.Find("GameManagr").GetComponent<GameManager>();
         healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
     }
 
@@ -47,5 +62,82 @@ public class HUDControl : MonoBehaviour
 
         moneyTextPosition = defaultMoneyText;
         healthBarPosition = defaultHealthBar;
+    }
+
+    public void StartPoweringUp()
+    {
+        Debug.Log("we're starting to power up baby");
+        poweringUpScreen.enabled = true;
+        gm.PauseNoMenu();
+        leftMod = modifiers[Random.Range(0, modifiers.Length - 1)];
+        rightMod = modifiers[Random.Range(0, modifiers.Length - 1)];
+        while (rightMod == leftMod)
+        {
+            rightMod = modifiers[Random.Range(0, modifiers.Length - 1)];
+        }
+        leftImage.sprite = leftMod.art;
+        rightImage.sprite = rightMod.art;
+        leftName.text = leftMod.name;
+        rightName.text = rightMod.name;
+        leftDesc.text = "";
+        rightDesc.text = "";
+        for (int i = 0; i < leftMod.description.Length; i++)
+        {
+            leftDesc.text += leftMod.description[i] + "\n";
+        }
+        for (int i = 0; i < rightMod.description.Length; i++)
+        {
+            rightDesc.text += rightMod.description[i] + "\n";
+        }
+    }
+
+    // I love buttons
+    public void LeftChosen()
+    {
+        Choose(leftMod);
+    }
+    public void RightChosen()
+    {
+        Choose(rightMod);
+    }
+
+    public void Choose(StatMod modifier)
+    {
+        Debug.Log("We're here");
+        for (int i = 0; i < modifier.stats.Length; i++)
+        {
+            Debug.Log("We made it this far");
+            switch (modifier.stats[i])
+            {
+                case StatMod.EStat.Health:
+                    pc.healthMax += (int)modifier.mods[i];
+                    break;
+                case StatMod.EStat.Speed:
+                    pc.maxSpeed *= modifier.mods[i];
+                    break;
+                case StatMod.EStat.InvTime:
+                    pc.invulMax += modifier.mods[i];
+                    break;
+                case StatMod.EStat.BulletDamage:
+                    pc.damage *= modifier.mods[i];
+                    break;
+                case StatMod.EStat.BulletSpeed:
+                    pc.bulletVelocity *= modifier.mods[i];
+                    break;
+                case StatMod.EStat.FireRate:
+                    pc.cooldownBase *= modifier.mods[i];
+                    break;
+                case StatMod.EStat.MoneyGained:
+                    pc.moneyMult *= modifier.mods[i];
+                    break;
+                default:
+                    Debug.Log("LOSER L LOSER NO MODIFICATIONS LOSER L + RATIO");
+                    break;
+            }
+        }
+        poweringUpScreen.enabled = false;
+        pc.gettingModifiers = false;
+        gm.ResumeGame();
+        Debug.Log("Done");
     }
 }
