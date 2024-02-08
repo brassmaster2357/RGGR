@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
-    private Image pickupIndicator;
+    public Image pickupIndicator;
     private CameraController cam;
     private GameManager gm;
     private SpriteRenderer playerSprite;
