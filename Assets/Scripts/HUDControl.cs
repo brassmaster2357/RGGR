@@ -20,17 +20,18 @@ public class HUDControl : MonoBehaviour
     private Vector2 defaultMoneyText = new(130, 64);
     private Vector2 moneyTextPosition = new(130, 64);
 
-    private StatMod leftMod;
-    private StatMod rightMod;
-    private Image leftImage;
-    private TextMeshProUGUI leftName;
-    private TextMeshProUGUI leftDesc;
-    private Image rightImage;
-    private TextMeshProUGUI rightName;
-    private TextMeshProUGUI rightDesc;
+    public StatMod leftMod;
+    public StatMod rightMod;
+    public Image leftImage;
+    public TextMeshProUGUI leftName;
+    public TextMeshProUGUI leftDesc;
+    public Image rightImage;
+    public TextMeshProUGUI rightName;
+    public TextMeshProUGUI rightDesc;
 
     void Start()
     {
+        poweringUpScreen.enabled = false;
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         gm = GameObject.Find("GameManagr").GetComponent<GameManager>();
         healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
@@ -38,10 +39,6 @@ public class HUDControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (pc.gettingModifiers)
-        {
-            StartPoweringUp();
-        }
         healthBar.rectTransform.sizeDelta = new(pc.health * 50, 100);
 
         if (delayedCash != pc.cash)
@@ -67,10 +64,11 @@ public class HUDControl : MonoBehaviour
         healthBarPosition = defaultHealthBar;
     }
 
-    void StartPoweringUp()
+    public void StartPoweringUp()
     {
+        Debug.Log("we're starting to power up baby");
         poweringUpScreen.enabled = true;
-        gm.paused = true;
+        gm.PauseNoMenu();
         leftMod = modifiers[Random.Range(0, modifiers.Length - 1)];
         rightMod = modifiers[Random.Range(0, modifiers.Length - 1)];
         while (rightMod == leftMod)
@@ -82,6 +80,7 @@ public class HUDControl : MonoBehaviour
         leftName.text = leftMod.name;
         rightName.text = rightMod.name;
         leftDesc.text = "";
+        rightDesc.text = "";
         for (int i = 0; i < leftMod.description.Length; i++)
         {
             leftDesc.text += leftMod.description[i] + "\n";
@@ -104,8 +103,10 @@ public class HUDControl : MonoBehaviour
 
     public void Choose(StatMod modifier)
     {
+        Debug.Log("We're here");
         for (int i = 0; i < modifier.stats.Length; i++)
         {
+            Debug.Log("We made it this far");
             switch (modifier.stats[i])
             {
                 case StatMod.EStat.Health:
@@ -136,6 +137,7 @@ public class HUDControl : MonoBehaviour
         }
         poweringUpScreen.enabled = false;
         pc.gettingModifiers = false;
-        gm.paused = false;
+        gm.ResumeGame();
+        Debug.Log("Done");
     }
 }

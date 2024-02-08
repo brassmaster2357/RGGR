@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer playerSprite;
     private Color invincibilityFlash = new(1,1,1,1);
     public bool gettingModifiers;
+    public HUDControl hudControl;
 
     public float maxSpeed = 8f;
     public int maxHealth = 6;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public int health = 6;
     public float invul = 0;
     private float rollDelay = 2.5f;
-    public float knockback = 0.5f;
+    public float knockback = 10f;
     public float cooldown = 0.25f;
     public float cash = 0;
     public float moneyMult = 1;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         cam = GameObject.Find("Main Camera").GetComponent<CameraController>();
+        gm = GameObject.Find("GameManagr").GetComponent<GameManager>();
         playerSprite = GetComponent<SpriteRenderer>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
@@ -159,6 +161,7 @@ public class PlayerController : MonoBehaviour
             if (aButton)
             {
                 Debug.Log("GET YER POWERS HEREEEEE");
+                hudControl.StartPoweringUp();
                 gettingModifiers = true;
                 Destroy(collision.gameObject);
             }

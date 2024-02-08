@@ -122,13 +122,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3869904705197480278}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 5064197575344419278}
+        m_TargetAssemblyTypeName: HUDControl, Assembly-CSharp
+        m_MethodName: LeftChosen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1000,7 +1000,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5572152710835737805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5064197575344419278}
+        m_TargetAssemblyTypeName: HUDControl, Assembly-CSharp
+        m_MethodName: RightChosen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3869904704951534407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,9 +1213,20 @@ MonoBehaviour:
   healthBarEmpty: {fileID: 7439659866596262634}
   moneyText: {fileID: 7147039968239659066}
   pc: {fileID: 0}
-  poweringUpScreen: {fileID: 0}
-  buffs: []
-  debuffs: []
+  poweringUpScreen: {fileID: 4444243652857445852}
+  modifiers:
+  - {fileID: 11400000, guid: c700c2e1b43ecad4fa9f22c90421bc6d, type: 2}
+  - {fileID: 11400000, guid: 740e4286b4b2c5b4da47221df7a4f427, type: 2}
+  - {fileID: 11400000, guid: c1551891dc2a0ea429b4f3863721ec04, type: 2}
+  - {fileID: 11400000, guid: eaee64082ee820846a5449d95358e9ed, type: 2}
+  leftMod: {fileID: 0}
+  rightMod: {fileID: 0}
+  leftImage: {fileID: 4039475961355951840}
+  leftName: {fileID: 4151348486634937805}
+  leftDesc: {fileID: 8502321540825709632}
+  rightImage: {fileID: 5508770676388446710}
+  rightName: {fileID: 1140373333783311182}
+  rightDesc: {fileID: 2106964017050677806}
 --- !u!1 &4571424991942008745
 GameObject:
   m_ObjectHideFlags: 0

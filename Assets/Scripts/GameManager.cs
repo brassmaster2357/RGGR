@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
             PauseGame();
     }
 
+    public void PauseNoMenu()
+    {
+        Time.timeScale = 0;
+        paused = true;
+    }
+
     public void PauseGame()
     {
         Time.timeScale = 0;
