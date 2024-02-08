@@ -16,7 +16,7 @@ MonoBehaviour:
   description:
   - +50% Money Gained
   - -1 Heart
-  Stats: 0600000000000000
-  Mods:
+  stats: 0600000000000000
+  mods:
   - 1.5
   - -2

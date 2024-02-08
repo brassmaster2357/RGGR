@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Bulwark
   m_EditorClassIdentifier: 
   art: {fileID: 0}
-  description: []
-  Stats: 
-  Mods: []
+  description:
+  - +2 Hearts
+  - +0.5 sec. Invulnerability
+  - -25% Speed
+  stats: 000000000200000001000000
+  mods:
+  - 2
+  - 0.5
+  - 0.75
