@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Nimble
   m_EditorClassIdentifier: 
   art: {fileID: 0}
-  description: []
-  Stats: 
-  Mods: []
+  description:
+  - +25% Speed
+  - -15% Damage
+  - -0.25 sec. Invulnerability
+  stats: 010000000300000002000000
+  mods:
+  - 1.25
+  - 0.85
+  - -0.25

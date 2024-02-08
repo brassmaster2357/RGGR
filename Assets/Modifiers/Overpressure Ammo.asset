@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Overpressure Ammo
   m_EditorClassIdentifier: 
   art: {fileID: 0}
-  description: 
-  Stats: 
-  Mods: []
+  description:
+  - +40% Damage
+  - +50% Bullet Speed
+  - +30% Firing Cooldown
+  stats: 030000000400000005000000
+  mods:
+  - 1.4
+  - 1.5
+  - 1.3
