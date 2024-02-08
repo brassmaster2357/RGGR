@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkeletonAI : MonoBehaviour
+public class SkeletonBoss : MonoBehaviour
 {
     public GameObject money;
-    
+
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
@@ -16,14 +16,21 @@ public class SkeletonAI : MonoBehaviour
     float distance;
     float distTrack;
     Vector2 direction;
-    
+
     float timer;
     public float fireRate;
     public float projSpeed;
     public GameObject projectile;
-    
+
     public int health;
     public float speed;
+
+    bool bulletHell;
+    int pattern;
+    public List<Arrow> pattern1;
+    public List<Arrow> pattern2;
+    public List<Arrow> pattern3;
+    public List<Arrow> pattern4;
 
     private void Awake()
     {
@@ -91,7 +98,7 @@ public class SkeletonAI : MonoBehaviour
         // make an arrow, rotate it, and send it
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
-        arrow.transform.rotation = Quaternion.Euler(0,0,angle);
+        arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
         arrow.GetComponent<Rigidbody2D>().velocity = arrow.transform.up * projSpeed;
         Destroy(arrow, 1);
     }
