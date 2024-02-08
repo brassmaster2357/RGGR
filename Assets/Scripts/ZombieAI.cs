@@ -11,7 +11,7 @@ public class ZombieAI : MonoBehaviour
     Rigidbody2D myRB;
 
     public float speed;
-    public int health;
+    public float health;
     public int damage;
 
     private void Start()
@@ -34,7 +34,7 @@ public class ZombieAI : MonoBehaviour
         //if collide with bullet, take damage and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
-            health -= 1;
+            health -= player.damage;
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
@@ -51,6 +51,7 @@ public class ZombieAI : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
-        Instantiate(money, transform.position, Quaternion.identity);
+        GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
+        coin.GetComponent<Rigidbody2D>().velocity = new(Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 }

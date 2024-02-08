@@ -11,9 +11,6 @@ public class GameManager : MonoBehaviour
     public bool paused = false;
 
     public GameObject pauseIndicator;
-    public GameObject resume;
-    public GameObject mainMenu;
-    public GameObject quit;
 
     public void PressedPauseButton()
     {
@@ -28,10 +25,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         pauseIndicator.SetActive(true);
-        resume.SetActive(true);
-        mainMenu.SetActive(true);
-        quit.SetActive(true);
-
         paused = true;
     }
 
@@ -40,10 +33,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         pauseIndicator.SetActive(false);
-        resume.SetActive(false);
-        mainMenu.SetActive(false);
-        quit.SetActive(false);
-
         paused = false;
     }
 
@@ -73,7 +62,7 @@ public class GameManager : MonoBehaviour
             ReturnToMenu();
     }
 
-    public void loadLevel(int levelNumber)
+    public void LoadLevel(int levelNumber)
     {
         if (levelNumber < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(levelNumber);

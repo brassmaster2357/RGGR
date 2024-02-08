@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private GameManager gm;
     private SpriteRenderer playerSprite;
     private Color invincibilityFlash = new(1,1,1,1);
+    public bool gettingModifiers;
 
     public float maxSpeed = 8f;
     public int maxHealth = 6;
@@ -25,12 +26,14 @@ public class PlayerController : MonoBehaviour
     public int healthMax = 6;
     public float invulMax = 1;
 
+    public float damage = 1;
     public int health = 6;
     public float invul = 0;
     private float rollDelay = 2.5f;
     public float knockback = 0.5f;
     public float cooldown = 0.25f;
     public float cash = 0;
+    public float moneyMult = 1;
 
     public float deadzone = 0.1f;
 
@@ -64,7 +67,7 @@ public class PlayerController : MonoBehaviour
             aButton = true;
         else
             aButton = false;
-        if (controller.startButton.wasPressedThisFrame)
+        if (controller.startButton.wasPressedThisFrame && !gettingModifiers)
             gm.PressedPauseButton();
         if (controller.leftStickButton.wasPressedThisFrame)
             Roll();
@@ -124,6 +127,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Money"))
+        {
+            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
+            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
+            Debug.Log("get moneyed");
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Heart"))
+        {
+            if (health < maxHealth)
+            {
+                health++;
+                Debug.Log("get healthed");
+                Destroy(collision.gameObject);
+            }
+        }
         if (collision.gameObject.CompareTag("Pickup"))
         {
             pickupIndicator.enabled = true;
@@ -134,23 +153,15 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
-        else
-            pickupIndicator.enabled = false;
-        if (collision.gameObject.CompareTag("Heart"))
+        else if (collision.gameObject.CompareTag("Relic"))
         {
-            if (health < maxHealth)
+            pickupIndicator.enabled = true;
+            if (aButton)
             {
-                health++;
-                Debug.Log("get healthed");
+                Debug.Log("GET YER POWERS HEREEEEE");
+                gettingModifiers = true;
                 Destroy(collision.gameObject);
             }
-        }
-        if (collision.gameObject.CompareTag("Money"))
-        {
-            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
-            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
-            Debug.Log("get moneyed");
-            Destroy(collision.gameObject);
         }
     }
 
@@ -166,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Pickup"))
+        if (collision.gameObject.CompareTag("Pickup") || collision.gameObject.CompareTag("Relic"))
         {
             pickupIndicator.enabled = false;
         }
