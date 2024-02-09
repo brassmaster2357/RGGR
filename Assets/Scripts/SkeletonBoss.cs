@@ -39,8 +39,8 @@ public class SkeletonBoss : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         timer = 0;
         
-        distance = Vector2.Distance(transform.position, waypoints[currentWaypoint]);
-        direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
+        distance = Vector2.Distance(transform.position, waypoints[1]);
+        direction = (Vector3)(waypoints[1] - (Vector2)(transform.position)).normalized;
         distTrack = 0;
     }
     private void FixedUpdate()
@@ -54,9 +54,8 @@ public class SkeletonBoss : MonoBehaviour
             //when you reach the waypoint, run a bullet hell
             if (distTrack >= distance)
             {
-                currentWaypoint = NewWaypoint(true);
-                distance = Vector2.Distance(transform.position, waypoints[currentWaypoint]);
-                direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
+                distance = Vector2.Distance(transform.position, waypoints[1]);
+                direction = (Vector3)(waypoints[1] - (Vector2)(transform.position)).normalized;
                 distTrack = 0;
             }
 
@@ -94,24 +93,6 @@ public class SkeletonBoss : MonoBehaviour
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
         arrow.GetComponent<Rigidbody2D>().velocity = arrow.transform.up * projSpeed;
         Destroy(arrow, 1);
-    }
-    int NewWaypoint(bool next)
-    {
-        // like a double looped linked list
-        if (next)
-        {
-            if (currentWaypoint == waypoints.Count - 1)
-                return 0;
-            else
-                return currentWaypoint + 1;
-        }
-        else
-        {
-            if (currentWaypoint == 0)
-                return waypoints.Count - 1;
-            else
-                return currentWaypoint - 1;
-        }
     }
     private void OnDestroy()
     {
