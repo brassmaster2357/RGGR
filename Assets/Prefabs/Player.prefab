@@ -355,7 +355,7 @@ MonoBehaviour:
   pickupIndicator: {fileID: 8942762899153518352}
   gettingModifiers: 0
   hudControl: {fileID: 0}
-  maxSpeed: 5
+  maxSpeed: 8
   maxHealth: 6
   cooldownBase: 0.25
   bulletVelocity: 1000

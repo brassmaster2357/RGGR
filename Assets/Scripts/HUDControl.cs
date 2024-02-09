@@ -69,11 +69,11 @@ public class HUDControl : MonoBehaviour
         Debug.Log("we're starting to power up baby");
         poweringUpScreen.enabled = true;
         gm.PauseNoMenu();
-        leftMod = modifiers[Random.Range(0, modifiers.Length - 1)];
-        rightMod = modifiers[Random.Range(0, modifiers.Length - 1)];
+        leftMod = modifiers[Random.Range(0, modifiers.Length)];
+        rightMod = modifiers[Random.Range(0, modifiers.Length)];
         while (rightMod == leftMod)
         {
-            rightMod = modifiers[Random.Range(0, modifiers.Length - 1)];
+            rightMod = modifiers[Random.Range(0, modifiers.Length)];
         }
         leftImage.sprite = leftMod.art;
         rightImage.sprite = rightMod.art;
