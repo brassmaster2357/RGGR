@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public Vector2 startPos;
     public Vector2 direction;
-    bool targetPlayer;
+    public bool targetPlayer;
     public float speed;
     public float waitTime;
     float angle;
@@ -24,6 +24,7 @@ public class Arrow : MonoBehaviour
             StartCoroutine(ShootDelay());
             GetComponent<Rigidbody2D>().velocity = direction;
             Destroy(this.gameObject, 5);
+            FIRE = false;
         }
     }
     IEnumerator ShootDelay()
