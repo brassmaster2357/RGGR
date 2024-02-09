@@ -51,10 +51,6 @@ public class PlayerController : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
-        if (gm.GetScene().name == "Floor 1")
-        {
-            playerStatCarryOver.Reset();
-        }
         playerStatCarryOver.Apply(this);
     }
 

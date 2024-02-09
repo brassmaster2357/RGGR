@@ -7,15 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public PlayerStatCarryOver playerStatCarryOver;
     public bool paused = false;
 
     public GameObject pauseIndicator;
-
-    public Scene GetScene()
-    {
-        return SceneManager.GetActiveScene();
-    }
 
     public void PressedPauseButton()
     {
@@ -49,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        playerStatCarryOver.Reset();
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
         paused = false;
@@ -56,11 +52,13 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
+        playerStatCarryOver.Reset();
         Application.Quit();
     }
 
     public void StartGame()
     {
+        playerStatCarryOver.Reset();
         SceneManager.LoadScene(1);
     }
 
