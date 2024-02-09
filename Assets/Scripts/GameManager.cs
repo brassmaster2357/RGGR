@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Debug.Log("giwugbheiog");
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 

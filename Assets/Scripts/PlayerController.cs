@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
+        Debug.Log(gm);
     }
 
     void Update()
@@ -136,7 +137,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("get moneyed");
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Heart"))
+        else if (collision.gameObject.CompareTag("Heart"))
         {
             if (health < maxHealth)
             {
@@ -145,25 +146,28 @@ public class PlayerController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
-        if (collision.gameObject.CompareTag("Pickup"))
+        else
         {
             pickupIndicator.enabled = true;
             if (aButton)
             {
-                Debug.Log(collision.gameObject.name);
-                cash += Random.Range(50f, 250f);
-                Destroy(collision.gameObject);
-            }
-        }
-        else if (collision.gameObject.CompareTag("Relic"))
-        {
-            pickupIndicator.enabled = true;
-            if (aButton)
-            {
-                Debug.Log("GET YER POWERS HEREEEEE");
-                hudControl.StartPoweringUp();
-                gettingModifiers = true;
-                Destroy(collision.gameObject);
+                switch (collision.gameObject.tag)
+                {
+                    case "Pickup":
+                        cash += Random.Range(50f, 250f);
+                        Destroy(collision.gameObject);
+                        break;
+                    case "Relic":
+                        hudControl.StartPoweringUp();
+                        gettingModifiers = true;
+                        Destroy(collision.gameObject);
+                        break;
+                    case "Staircase":
+                        gm.LoadNextLevel();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -180,7 +184,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Pickup") || collision.gameObject.CompareTag("Relic"))
+        if (collision.gameObject.CompareTag("Pickup") || collision.gameObject.CompareTag("Relic") || collision.gameObject.CompareTag("Staircase"))
         {
             pickupIndicator.enabled = false;
         }

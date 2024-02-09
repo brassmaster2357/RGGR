@@ -12,6 +12,7 @@ TagManager:
   - Heart
   - Walls
   - Relic
+  - Staircase
   layers:
   - Default
   - TransparentFX
