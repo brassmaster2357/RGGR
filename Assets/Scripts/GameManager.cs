@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseIndicator;
 
+    public Scene GetScene()
+    {
+        return SceneManager.GetActiveScene();
+    }
+
     public void PressedPauseButton()
     {
         if (paused)
@@ -61,7 +66,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Debug.Log("giwugbheiog");
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 

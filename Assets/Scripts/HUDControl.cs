@@ -40,6 +40,7 @@ public class HUDControl : MonoBehaviour
     void FixedUpdate()
     {
         healthBar.rectTransform.sizeDelta = new(pc.health * 50, 100);
+        healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
 
         if (delayedCash != pc.cash)
         {

@@ -7,6 +7,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerStatCarryOver playerStatCarryOver;
 
     private UnityEngine.InputSystem.Gamepad controller;
     private Rigidbody2D rb;
@@ -50,7 +51,11 @@ public class PlayerController : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
-        Debug.Log(gm);
+        if (gm.GetScene().name == "Floor 1")
+        {
+            playerStatCarryOver.Reset();
+        }
+        playerStatCarryOver.Apply(this);
     }
 
     void Update()
@@ -122,7 +127,7 @@ public class PlayerController : MonoBehaviour
         invul -= Time.deltaTime;
         rollDelay -= Time.deltaTime;
         if (invul > 0)
-            invincibilityFlash.a = Mathf.Cos(invul * 5 * Mathf.PI) * 0.2f + 0.6f;
+            invincibilityFlash.a = Mathf.Cos(invul * 5 * Mathf.PI) * 0.2f + 0.4f;
         else
             invincibilityFlash.a = 1;
         playerSprite.color = invincibilityFlash;
@@ -163,6 +168,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(collision.gameObject);
                         break;
                     case "Staircase":
+                        playerStatCarryOver.Get(this);
                         gm.LoadNextLevel();
                         break;
                     default:

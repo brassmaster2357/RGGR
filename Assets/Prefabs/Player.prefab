@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2be4216e355c147b84c900edb7f431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatCarryOver: {fileID: 11400000, guid: 54a3349047dd763489763d2769d4b5fb, type: 2}
   velocity: {x: 0, y: 0}
   bullet: {fileID: 2034341846564913712, guid: 99324cfd4b940eb40ba312591e4414aa, type: 3}
   pickupIndicator: {fileID: 8942762899153518352}
