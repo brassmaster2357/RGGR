@@ -49,7 +49,7 @@ public class SkeletonBoss : MonoBehaviour
         {
             // move and keep track of the distance moved to the next waypoint
             transform.position += (Vector3)(direction * Time.deltaTime * speed);
-            distTrack = Vector2.Distance(transform.position, waypoints[NewWaypoint(false)]);
+            distTrack = Vector2.Distance(transform.position, waypoints[1]);
 
             //when you reach the waypoint, run a bullet hell
             if (distTrack >= distance)
