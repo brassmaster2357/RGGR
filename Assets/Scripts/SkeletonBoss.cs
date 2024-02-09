@@ -12,7 +12,6 @@ public class SkeletonBoss : MonoBehaviour
 
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
     public List<Vector2> waypoints;
-    int currentWaypoint;
     float distance;
     float distTrack;
     Vector2 direction;
@@ -39,27 +38,20 @@ public class SkeletonBoss : MonoBehaviour
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
         timer = 0;
-
-        //only initialize these if the skeleton has places to go
-        if (waypoints.Count >= 2)
-        {
-            transform.position = waypoints[0];
-            currentWaypoint = 1;
-            distance = Vector2.Distance(transform.position, waypoints[currentWaypoint]);
-            direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
-            distTrack = 0;
-        }
+        
+        distance = Vector2.Distance(transform.position, waypoints[currentWaypoint]);
+        direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
+        distTrack = 0;
     }
     private void FixedUpdate()
     {
-        //dont run this code in sentry mode
-        if (waypoints.Count >= 2)
+        if (!bulletHell)
         {
             // move and keep track of the distance moved to the next waypoint
             transform.position += (Vector3)(direction * Time.deltaTime * speed);
             distTrack = Vector2.Distance(transform.position, waypoints[NewWaypoint(false)]);
 
-            //when you reach a waypoint, change to the next one and reset some variables
+            //when you reach the waypoint, run a bullet hell
             if (distTrack >= distance)
             {
                 currentWaypoint = NewWaypoint(true);
@@ -67,19 +59,20 @@ public class SkeletonBoss : MonoBehaviour
                 direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
                 distTrack = 0;
             }
+
+            // shooting timer
+            if (timer < fireRate)
+                timer += Time.deltaTime;
+            else
+            {
+                timer = 0;
+                Shoot();
+            }
         }
         // if dead, die
         if (health <= 0)
             Destroy(this.gameObject);
 
-        // shooting timer
-        if (timer < fireRate)
-            timer += Time.deltaTime;
-        else
-        {
-            timer = 0;
-            Shoot();
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
