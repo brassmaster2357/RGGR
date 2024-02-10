@@ -198,6 +198,10 @@ public class PlayerController : MonoBehaviour
         {
             Damage(1);
         }
+        if (collision.gameObject.CompareTag("Beeg Arrow"))
+        {
+            Damage(2);
+        }
     }
 
     public void Damage(int damage)

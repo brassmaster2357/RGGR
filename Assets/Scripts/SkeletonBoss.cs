@@ -62,41 +62,39 @@ public class SkeletonBoss : MonoBehaviour
             else
                 transform.position = waypoints[2];
         }
-        distance = Vector2.Distance(transform.position, direction);
+        distance = Vector2.Distance(transform.position, currentWaypoint);
         distTrack = 0;
         bulletHell = false;
+        bulletsShooting = false;
     }
     private void FixedUpdate()
     {
         if (bulletHell)
         {
-            print("Time for bullets!!!");
-            timer = -1;
+            print("aggressive");
+            bulletHell = false;
             BulletHell();
         }
         else if (!bulletsShooting)
         {
-            print("Time for getting shot");
             // move and keep track of the distance moved to the next waypoint
             transform.position += (Vector3)(direction * Time.deltaTime * speed);
-            distTrack = Vector2.Distance(transform.position, waypoints[1]);
-
+            distTrack = distance - Vector2.Distance(transform.position, currentWaypoint);
+            print(currentWaypoint);
             //when you reach the waypoint, run a bullet hell
-            if (distTrack >= distance)
+            if (distTrack <= 0)
             {
-                print("WE meade it");
+                print("made it");
                 bulletHell = true;
+                bulletsShooting = true;
                 timer = 0;
             }
             // shooting timer
             if (timer < fireRate)
-            {
-                print("Timer" + timer);
                 timer += Time.deltaTime;
-            }
             else
             {
-                print("POW");
+                print("passive shot");
                 timer = 0;
                 Shoot();
             }
@@ -105,7 +103,7 @@ public class SkeletonBoss : MonoBehaviour
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            print("Heavy is dead");
+            print("dead");
         }
 
     }
@@ -114,7 +112,7 @@ public class SkeletonBoss : MonoBehaviour
         //if collide with bullet, take damage, get knocked back and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
-            print("Why isn't the heavy dead?");
+            print("I got shot");
             health -= 1;
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
@@ -125,7 +123,7 @@ public class SkeletonBoss : MonoBehaviour
     void Shoot()
     {
         // make an arrow, rotate it, and send it
-        print("No u");
+        print("I shot at you");
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -139,7 +137,6 @@ public class SkeletonBoss : MonoBehaviour
     }
     void BulletHell()
     {
-        bulletsShooting = true;
         switch (Random.Range(1, 5))
         {
             case 1:
@@ -156,9 +153,8 @@ public class SkeletonBoss : MonoBehaviour
                 pattern = pattern4;
                 break;
         }
-        waitTime = 6;
+        waitTime = 5;
         pattern = pattern1;
-        print("Ra");
         foreach (Arrow arrow in pattern)
         {
             GameObject gameObject = Instantiate(projectile, new Vector2(1000, 1000), Quaternion.identity);
@@ -169,9 +165,9 @@ public class SkeletonBoss : MonoBehaviour
             myA.speed = arrow.speed;
             myA.waitTime = arrow.waitTime;
             myA.FIRE = true;
-            print("Ta");
+            print("arrow set up");
         }
-        if (timer < waitTime -1)
+        if (timer < waitTime)
             timer += Time.deltaTime;
         else
         {

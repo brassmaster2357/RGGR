@@ -13,6 +13,7 @@ TagManager:
   - Walls
   - Relic
   - Staircase
+  - Beeg Arrow
   layers:
   - Default
   - TransparentFX

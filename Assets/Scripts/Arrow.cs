@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour
     {
         if (this.gameObject.name == "Beeg Arrow" && FIRE)
         {
+            print("Firing");
             transform.position = startPos;
             angle = Mathf.Atan2((direction.x - startPos.x), (direction.y - startPos.y)) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.Euler(0, 0, angle);
