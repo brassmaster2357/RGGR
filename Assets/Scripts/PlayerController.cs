@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Beeg Arrow"))
         {
-            Damage(2);
+            Damage(1);
         }
     }
 

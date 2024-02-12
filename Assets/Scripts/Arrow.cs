@@ -13,23 +13,23 @@ public class Arrow : MonoBehaviour
     public bool FIRE;
     private void FixedUpdate()
     {
-        if (this.gameObject.name == "Beeg Arrow" && FIRE)
+        if (!name.Contains("Position") && FIRE)
         {
-            print("Firing");
+            FIRE = false;
             transform.position = startPos;
-            angle = Mathf.Atan2((direction.x - startPos.x), (direction.y - startPos.y)) * Mathf.Rad2Deg - 90;
+            float angle = Mathf.Atan2((direction.y - transform.position.y), (direction.x - transform.position.x)) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+            direction = (direction - startPos).normalized * speed;
             if (targetPlayer)
                 direction = GameObject.Find("Player").transform.position;
-            direction = (direction - startPos).normalized * speed;
             StartCoroutine(ShootDelay());
-            GetComponent<Rigidbody2D>().velocity = direction;
-            Destroy(this.gameObject, 5);
-            FIRE = false;
         }
     }
     IEnumerator ShootDelay()
     {
         yield return new WaitForSeconds(waitTime);
+        GetComponent<Rigidbody2D>().velocity = direction;
+        Destroy(this.gameObject, 5);
+        FIRE = false;
     }
 }

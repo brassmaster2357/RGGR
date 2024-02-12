@@ -16,6 +16,7 @@ public class SkeletonBoss : MonoBehaviour
     float distance;
     float distTrack;
     Vector2 direction;
+    Vector2 lastWaypoint;
 
     float timer;
     public float fireRate;
@@ -46,26 +47,37 @@ public class SkeletonBoss : MonoBehaviour
         {
             int random = Random.Range(0, 2);
             currentWaypoint = waypoints[random];
-            direction = (currentWaypoint - (Vector2)transform.position).normalized;
             if (random == 0)
+            {
                 transform.position = waypoints[1];
+                lastWaypoint = waypoints[1];
+            }
             else
+            {
                 transform.position = waypoints[0];
+                lastWaypoint = waypoints[0];
+            }
         }
         else
         {
             int random = Random.Range(2, 4);
             currentWaypoint = waypoints[random];
-            direction = (currentWaypoint - (Vector2)transform.position).normalized;
             if (random == 2)
+            {
                 transform.position = waypoints[3];
+                lastWaypoint = waypoints[3];
+            }
             else
+            {
                 transform.position = waypoints[2];
+                lastWaypoint = waypoints[2];
+            }
         }
         distance = Vector2.Distance(transform.position, currentWaypoint);
         distTrack = 0;
         bulletHell = false;
         bulletsShooting = false;
+        direction = (currentWaypoint - (Vector2)transform.position).normalized;
     }
     private void FixedUpdate()
     {
@@ -78,16 +90,17 @@ public class SkeletonBoss : MonoBehaviour
         else if (!bulletsShooting)
         {
             // move and keep track of the distance moved to the next waypoint
-            transform.position += (Vector3)(direction * Time.deltaTime * speed);
-            distTrack = distance - Vector2.Distance(transform.position, currentWaypoint);
-            print(currentWaypoint);
+            myRB.velocity = direction * speed;
+            distTrack = Vector2.Distance(transform.position, lastWaypoint);
+            print(distTrack);
             //when you reach the waypoint, run a bullet hell
-            if (distTrack <= 0)
+            if (distTrack >= distance)
             {
                 print("made it");
                 bulletHell = true;
                 bulletsShooting = true;
                 timer = 0;
+                transform.position = new Vector2(1000, 1000);
             }
             // shooting timer
             if (timer < fireRate)
@@ -133,10 +146,15 @@ public class SkeletonBoss : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
-        Instantiate(money, transform.position, Quaternion.identity);
+        for (int i = 0; i < Random.Range(10, 31); i++)
+        {
+            GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
+            coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        }
     }
     void BulletHell()
     {
+        print("1");
         switch (Random.Range(1, 5))
         {
             case 1:
@@ -167,32 +185,54 @@ public class SkeletonBoss : MonoBehaviour
             myA.FIRE = true;
             print("arrow set up");
         }
+        print("2");
         if (timer < waitTime)
             timer += Time.deltaTime;
         else
         {
-            if (target.transform.position.x >= 0)
+            print("3");
+            StartCoroutine(WaitForArrows());
+        }
+    }
+    IEnumerator WaitForArrows()
+    {
+        print("4");
+        yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Beeg Arrow").Length == 0);
+        if (target.transform.position.x >= 0)
+        {
+            int random = Random.Range(0, 2);
+            currentWaypoint = waypoints[random];
+            if (random == 0)
             {
-                int random = Random.Range(0, 2);
-                currentWaypoint = waypoints[random];
-                direction = (currentWaypoint - (Vector2)transform.position).normalized;
-                if (random == 0)
-                    transform.position = waypoints[1];
-                else
-                    transform.position = waypoints[0];
+                transform.position = waypoints[1];
+                lastWaypoint = waypoints[1];
             }
             else
             {
-                int random = Random.Range(2, 4);
-                currentWaypoint = waypoints[random];
-                direction = (currentWaypoint - (Vector2)transform.position).normalized;
-                if (random == 2)
-                    transform.position = waypoints[3];
-                else
-                    transform.position = waypoints[2];
+                transform.position = waypoints[0];
+                lastWaypoint = waypoints[0];
             }
-            timer = 0;
-            bulletsShooting = false;
         }
+        else
+        {
+            int random = Random.Range(2, 4);
+            currentWaypoint = waypoints[random];
+            if (random == 2)
+            {
+                transform.position = waypoints[3];
+                lastWaypoint = waypoints[3];
+            }
+            else
+            {
+                transform.position = waypoints[2];
+                lastWaypoint = waypoints[2];
+            }
+        }
+        distance = Vector2.Distance(transform.position, currentWaypoint);
+        distTrack = 0;
+        direction = (currentWaypoint - (Vector2)transform.position).normalized;
+        timer = 0;
+        bulletsShooting = false;
+        print("5");
     }
 }

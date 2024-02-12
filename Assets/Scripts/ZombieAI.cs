@@ -52,6 +52,6 @@ public class ZombieAI : MonoBehaviour
     {
         if (!gameObject.scene.isLoaded) return;
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
-        coin.GetComponent<Rigidbody2D>().velocity = new(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
     }
 }
