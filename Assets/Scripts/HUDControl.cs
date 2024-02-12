@@ -37,6 +37,14 @@ public class HUDControl : MonoBehaviour
         healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
     }
 
+    private void Update()
+    {
+        if (pc.xButton && pc.gettingModifiers)
+            Choose(leftMod);
+        else if (pc.bButton && pc.gettingModifiers)
+            Choose(rightMod);
+    }
+
     void FixedUpdate()
     {
         healthBar.rectTransform.sizeDelta = new(pc.health * 50, 100);
@@ -104,10 +112,9 @@ public class HUDControl : MonoBehaviour
 
     public void Choose(StatMod modifier)
     {
-        Debug.Log("We're here");
+        pc.gettingModifiers = false;
         for (int i = 0; i < modifier.stats.Length; i++)
         {
-            Debug.Log("We made it this far");
             switch (modifier.stats[i])
             {
                 case StatMod.EStat.Health:
@@ -137,7 +144,6 @@ public class HUDControl : MonoBehaviour
             }
         }
         poweringUpScreen.enabled = false;
-        pc.gettingModifiers = false;
         gm.ResumeGame();
         Debug.Log("Done");
     }

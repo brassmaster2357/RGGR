@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 leftStick;
     public Vector2 rightStick;
     public bool aButton;
+    public bool bButton;
+    public bool xButton;
 
     void Start()
     {
@@ -71,6 +73,14 @@ public class PlayerController : MonoBehaviour
             aButton = true;
         else
             aButton = false;
+        if (controller.bButton.isPressed)
+            bButton = true;
+        else
+            bButton = false;
+        if (controller.xButton.isPressed)
+            xButton = true;
+        else
+            xButton = false;
         if (controller.startButton.wasPressedThisFrame && !gettingModifiers)
             gm.PressedPauseButton();
         if (controller.leftStickButton.wasPressedThisFrame)
@@ -168,6 +178,7 @@ public class PlayerController : MonoBehaviour
                         gm.LoadNextLevel();
                         break;
                     default:
+                        pickupIndicator.enabled = false;
                         break;
                 }
             }

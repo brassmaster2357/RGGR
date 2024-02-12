@@ -54,12 +54,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484459725725631586, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_Name
-      value: Base Room
+      value: North West
       objectReference: {fileID: 0}
     - target: {fileID: 6050212866558151533, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6428308402010304574, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 194efdaade6f95a46872104e2ac93c43, type: 3}
     - target: {fileID: 6979284272763439796, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -3,7 +3,9 @@ guid: 23202e9800440a8468c1edd53d279e4b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerStatCarryOver: {fileID: 11400000, guid: 54a3349047dd763489763d2769d4b5fb, type: 2}
+  - pauseIndicator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

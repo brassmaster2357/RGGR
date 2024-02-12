@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23202e9800440a8468c1edd53d279e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatCarryOver: {fileID: 11400000, guid: 54a3349047dd763489763d2769d4b5fb, type: 2}
   paused: 0
+  onMenu: 0
   pauseIndicator: {fileID: 0}
-  resume: {fileID: 0}
-  mainMenu: {fileID: 0}
-  quit: {fileID: 0}
