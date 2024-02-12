@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
                         gm.LoadNextLevel();
                         break;
                     default:
+                        pickupIndicator.enabled = false;
                         break;
                 }
             }
