@@ -12,6 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Floor 1.unity
     guid: 2df692000954854409d9de92fec137b4
   - enabled: 1
-    path: Assets/Scenes/Enemy Test.unity
-    guid: d1eb3f1af3c15024a9706d823beb9bcd
+    path: Assets/Scenes/Boss 1.unity
+    guid: aad4e2f877458aa4bb0043323eb42041
+  - enabled: 1
+    path: Assets/Scenes/Floor 2.unity
+    guid: 0de7b0bf40364ad4f9984cf1d40ceb6c
+  - enabled: 1
+    path: Assets/Scenes/Boss 2.unity
+    guid: d971692f7b3ad204aa84fdaec97b912d
+  - enabled: 1
+    path: Assets/Scenes/Floor 3.unity
+    guid: db433d900b8f2ba488291aea94072ea3
+  - enabled: 1
+    path: Assets/Scenes/Boss 3.unity
+    guid: bb27939593fc29a4ca883c9c53aff949
   m_configObjects: {}
