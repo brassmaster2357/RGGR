@@ -2291,7 +2291,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863572855811989362, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1215529951684559830, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: m_IsActive
@@ -2389,13 +2389,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4039475961355951840, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: a4322046112e8d744b8c91bcf2c5c120, type: 3}
     - target: {fileID: 5064197575344419278, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: pc
       value: 
       objectReference: {fileID: 279435634}
+    - target: {fileID: 5508770676388446710, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 4cf66290836ba0d44a22a72e4f3f4410, type: 3}
     - target: {fileID: 8171309670191890271, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8395582723061531186, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -2403,7 +2411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712885440443555683, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
