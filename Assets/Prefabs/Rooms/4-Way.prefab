@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4484459725725631586, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_Name
-      value: Base Room
+      value: 4-Way
       objectReference: {fileID: 0}
     - target: {fileID: 5988973401667766548, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_IsActive
@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6428308402010304574, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a814c7d3d3c05e1469022b19fbf6e0be, type: 3}
     - target: {fileID: 6979284272763439796, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
       propertyPath: m_IsActive
       value: 0
