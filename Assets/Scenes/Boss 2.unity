@@ -656,6 +656,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Room
       objectReference: {fileID: 0}
+    - target: {fileID: 6428308402010304574, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428308402010304574, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.73333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428308402010304574, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
