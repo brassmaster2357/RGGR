@@ -29,7 +29,7 @@ public class Arrow : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         GetComponent<Rigidbody2D>().velocity = direction;
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 3);
         FIRE = false;
     }
 }

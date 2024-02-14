@@ -26,9 +26,10 @@ public class SkeletonBoss : MonoBehaviour
     public float health;
     public float speed;
 
+    float timer2;
+    public float restTime;
     bool bulletHell;
     bool bulletsShooting;
-    float waitTime;
     List<Arrow> pattern;
     public List<Arrow> pattern1;
     public List<Arrow> pattern2;
@@ -42,6 +43,7 @@ public class SkeletonBoss : MonoBehaviour
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
         timer = 0;
+        timer2 = 0;
 
         if (target.transform.position.x >= 0)
         {
@@ -81,42 +83,68 @@ public class SkeletonBoss : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (bulletHell)
+        if (!bulletsShooting)
         {
-            print("aggressive");
-            bulletHell = false;
-            BulletHell();
+            if (timer2 < restTime)
+                timer2 += Time.deltaTime;
+            else
+                BulletHell();
         }
-        else if (!bulletsShooting)
+        // move and keep track of the distance moved to the next waypoint
+        myRB.velocity = direction * speed;
+        distTrack = Vector2.Distance(transform.position, lastWaypoint);
+        //when you reach the waypoint, run a bullet hell
+        if (distTrack >= distance)
         {
-            // move and keep track of the distance moved to the next waypoint
-            myRB.velocity = direction * speed;
-            distTrack = Vector2.Distance(transform.position, lastWaypoint);
-            print(distTrack);
-            //when you reach the waypoint, run a bullet hell
-            if (distTrack >= distance)
+            if (target.transform.position.x >= 0)
             {
-                print("made it");
-                bulletHell = true;
-                bulletsShooting = true;
-                timer = 0;
-                transform.position = new Vector2(1000, 1000);
+                int random = Random.Range(0, 2);
+                currentWaypoint = waypoints[random];
+                if (random == 0)
+                {
+                    transform.position = waypoints[1];
+                    lastWaypoint = waypoints[1];
+                }
+                else
+                {
+                    transform.position = waypoints[0];
+                    lastWaypoint = waypoints[0];
+                }
             }
-            // shooting timer
-            if (timer < fireRate)
-                timer += Time.deltaTime;
             else
             {
-                print("passive shot");
-                timer = 0;
-                Shoot();
+                int random = Random.Range(2, 4);
+                currentWaypoint = waypoints[random];
+                if (random == 2)
+                {
+                    transform.position = waypoints[3];
+                    lastWaypoint = waypoints[3];
+                }
+                else
+                {
+                    transform.position = waypoints[2];
+                    lastWaypoint = waypoints[2];
+                }
             }
+            distance = Vector2.Distance(transform.position, currentWaypoint);
+            distTrack = 0;
+            direction = (currentWaypoint - (Vector2)transform.position).normalized;
+            timer = 0;
         }
+        // shooting timer
+        if (timer < fireRate)
+            timer += Time.deltaTime;
+        else
+        {
+            timer = 0;
+            if (!bulletsShooting)
+                Shoot();
+        }
+        
         // if dead, die
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            print("dead");
         }
 
     }
@@ -125,7 +153,6 @@ public class SkeletonBoss : MonoBehaviour
         //if collide with bullet, take damage, get knocked back and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
-            print("I got shot");
             health -= 1;
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
@@ -136,7 +163,6 @@ public class SkeletonBoss : MonoBehaviour
     void Shoot()
     {
         // make an arrow, rotate it, and send it
-        print("I shot at you");
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -154,11 +180,10 @@ public class SkeletonBoss : MonoBehaviour
     }
     void BulletHell()
     {
-        print("1");
+        bulletsShooting = true;
         switch (Random.Range(1, 5))
         {
             case 1:
-                waitTime = 6;
                 pattern = pattern1;
                 break;
             case 2:
@@ -171,8 +196,7 @@ public class SkeletonBoss : MonoBehaviour
                 pattern = pattern4;
                 break;
         }
-        waitTime = 5;
-        pattern = pattern1;
+        pattern = pattern2;
         foreach (Arrow arrow in pattern)
         {
             GameObject gameObject = Instantiate(projectile, new Vector2(1000, 1000), Quaternion.identity);
@@ -183,56 +207,14 @@ public class SkeletonBoss : MonoBehaviour
             myA.speed = arrow.speed;
             myA.waitTime = arrow.waitTime;
             myA.FIRE = true;
-            print("arrow set up");
         }
-        print("2");
-        if (timer < waitTime)
-            timer += Time.deltaTime;
-        else
-        {
-            print("3");
-            StartCoroutine(WaitForArrows());
-        }
+        StartCoroutine(WaitForArrows());
+        
     }
     IEnumerator WaitForArrows()
     {
-        print("4");
         yield return new WaitUntil(() => GameObject.FindGameObjectsWithTag("Beeg Arrow").Length == 0);
-        if (target.transform.position.x >= 0)
-        {
-            int random = Random.Range(0, 2);
-            currentWaypoint = waypoints[random];
-            if (random == 0)
-            {
-                transform.position = waypoints[1];
-                lastWaypoint = waypoints[1];
-            }
-            else
-            {
-                transform.position = waypoints[0];
-                lastWaypoint = waypoints[0];
-            }
-        }
-        else
-        {
-            int random = Random.Range(2, 4);
-            currentWaypoint = waypoints[random];
-            if (random == 2)
-            {
-                transform.position = waypoints[3];
-                lastWaypoint = waypoints[3];
-            }
-            else
-            {
-                transform.position = waypoints[2];
-                lastWaypoint = waypoints[2];
-            }
-        }
-        distance = Vector2.Distance(transform.position, currentWaypoint);
-        distTrack = 0;
-        direction = (currentWaypoint - (Vector2)transform.position).normalized;
-        timer = 0;
         bulletsShooting = false;
-        print("5");
+        timer2 = 0;
     }
 }

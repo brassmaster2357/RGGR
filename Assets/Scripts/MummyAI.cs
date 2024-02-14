@@ -4,6 +4,7 @@ using UnityEngine;
 public class MummyAI : MonoBehaviour
 {
     public GameObject money;
+    public GameObject heartPickup;
 
     GameObject target;
     PlayerController player;
@@ -86,5 +87,10 @@ public class MummyAI : MonoBehaviour
         if (!gameObject.scene.isLoaded) return;
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
         coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        if (Random.Range(0f, 1f) >= 0.95f)
+        {
+            GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+            heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        }
     }
 }

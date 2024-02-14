@@ -5,7 +5,8 @@ using UnityEngine;
 public class SkeletonAI : MonoBehaviour
 {
     public GameObject money;
-    
+    public GameObject heartPickup;
+
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
@@ -118,5 +119,10 @@ public class SkeletonAI : MonoBehaviour
         if (!gameObject.scene.isLoaded) return;
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
         coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        if (Random.Range(0f, 1f) >= 0.95f)
+        {
+            GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+            heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+        }
     }
 }

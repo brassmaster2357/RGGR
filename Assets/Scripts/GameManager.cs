@@ -9,18 +9,27 @@ public class GameManager : MonoBehaviour
 {
     public PlayerStatCarryOver playerStatCarryOver;
     public bool paused = false;
-    private bool playerDidThePause = false;
+    private bool playerManualPause = false;
+    private bool gameOverScreen = false;
     public bool onMenu = false;
     private UnityEngine.InputSystem.Gamepad controller;
 
     public GameObject pauseIndicator;
 
-    private void Start()
+    private void Awake()
     {
         controller = UnityEngine.InputSystem.Gamepad.current;
         if (SceneManager.GetActiveScene().name == "Main Menu")
         {
             onMenu = true;
+        }
+        if (SceneManager.GetActiveScene().buildIndex >= 7)
+        {
+            gameOverScreen = true;
+            if (SceneManager.GetActiveScene().buildIndex == 7)
+            {
+                GameObject.Find("Score Text").GetComponent<TextMeshProUGUI>().text = ((int)playerStatCarryOver.cash).ToString();
+            }
         }
     }
 
@@ -46,14 +55,14 @@ public class GameManager : MonoBehaviour
             }
             if (controller.yButton.wasPressedThisFrame)
             {
-                GameObject credits = GameObject.Find("Credits");
+                GameObject credits = GameObject.Find("Credits Screen");
                 if (credits.activeSelf)
                     credits.SetActive(false);
                 else
                     credits.SetActive(true);
             }
         }
-        if (playerDidThePause)
+        if (playerManualPause)
         {
             if (controller.aButton.wasPressedThisFrame)
             {
@@ -68,6 +77,21 @@ public class GameManager : MonoBehaviour
                 QuitGame();
             }
         }
+        if (gameOverScreen)
+        {
+            if (controller.aButton.wasPressedThisFrame)
+            {
+                ReturnToMenu();
+            }
+            if (controller.xButton.wasPressedThisFrame)
+            {
+                GameObject credits = GameObject.Find("Credits Screen");
+                if (credits.activeSelf)
+                    credits.SetActive(false);
+                else
+                    credits.SetActive(true);
+            }
+        }
     }
 
     public void PressedPauseButton()
@@ -75,13 +99,21 @@ public class GameManager : MonoBehaviour
         if (paused)
         {
             ResumeGame();
-            playerDidThePause = false;
+            playerManualPause = false;
         }
         else
         {
             PauseGame();
-            playerDidThePause = true;
+            playerManualPause = true;
         }
+    }
+
+    public void GameOver()
+    {
+        playerStatCarryOver.Reset();
+        SceneManager.LoadScene(8);
+        Time.timeScale = 1;
+        paused = false;
     }
 
     public void PauseNoMenu()
