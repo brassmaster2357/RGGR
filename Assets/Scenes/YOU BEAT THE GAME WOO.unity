@@ -1142,11 +1142,7 @@ GameObject:
   - component: {fileID: 1015141238}
   - component: {fileID: 1015141237}
   m_Layer: 5
-<<<<<<< Updated upstream
-  m_Name: Text (TMP) (1)
-=======
   m_Name: Score Text
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1553,11 +1549,7 @@ GameObject:
   - component: {fileID: 1248624007}
   - component: {fileID: 1248624006}
   m_Layer: 5
-<<<<<<< Updated upstream
-  m_Name: Credits
-=======
   m_Name: Credits Screen
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
