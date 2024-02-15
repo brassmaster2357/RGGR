@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
             }
             if (controller.yButton.wasPressedThisFrame)
             {
-                GameObject credits = GameObject.Find("Credits Screen");
+                GameObject credits = GameObject.Find("Canvas").transform.GetChild(0).gameObject; // why public variable when can GetChild()
                 if (credits.activeSelf)
                     credits.SetActive(false);
                 else
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             }
             if (controller.xButton.wasPressedThisFrame)
             {
-                GameObject credits = GameObject.Find("Credits Screen");
+                GameObject credits = GameObject.Find("Canvas").transform.GetChild(0).gameObject; // why public variable when can GetChild()
                 if (credits.activeSelf)
                     credits.SetActive(false);
                 else
