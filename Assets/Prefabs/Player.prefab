@@ -349,8 +349,8 @@ MonoBehaviour:
   pickupIndicator: {fileID: 8942762899153518352}
   gettingModifiers: 0
   hudControl: {fileID: 0}
-  playerHitSound: {fileID: 0}
-  fireSound: {fileID: 0}
+  playerHitSound: {fileID: -8659127317550658002}
+  fireSound: {fileID: -4622148661577587414}
   maxSpeed: 8
   maxHealth: 6
   cooldownBase: 0.25
@@ -380,7 +380,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9de9bd68584ec594693fbe8c7ef73aa5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -476,7 +476,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6cf99859cf2f204489b73102f4ac79b7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
