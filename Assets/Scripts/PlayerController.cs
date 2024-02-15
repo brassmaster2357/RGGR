@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
         playerSprite.color = invincibilityFlash;
 
         transform.position = new(rb.position.x, rb.position.y, rb.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
+        playerSprite.flipX = velocity.x >= 0;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

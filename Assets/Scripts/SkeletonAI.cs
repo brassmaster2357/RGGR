@@ -10,6 +10,7 @@ public class SkeletonAI : MonoBehaviour
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
+    SpriteRenderer sprite;
 
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
     public List<Vector2> waypoints;
@@ -32,6 +33,7 @@ public class SkeletonAI : MonoBehaviour
         target = GameObject.Find("Player");
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         timer = 0;
 
         //only initialize these if the skeleton has places to go
@@ -63,6 +65,11 @@ public class SkeletonAI : MonoBehaviour
             }
         }
         transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
+        if (Mathf.Abs(direction.x) > 0.1f)
+        {
+            sprite.flipX = direction.x >= 0;
+        }
+
         // if dead, die
         if (health <= 0)
             Destroy(this.gameObject);
