@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6133338351337736132}
   m_Layer: 3
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   projSpeed: 10
   projectile: {fileID: 1971161690701796082, guid: d8d08fa512996624d8b4d57daf969470, type: 3}
   health: 5
+<<<<<<< Updated upstream
   speed: 5
 --- !u!82 &6133338351337736132
 AudioSource:
@@ -353,3 +354,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+=======
+  speed: 15
+>>>>>>> Stashed changes

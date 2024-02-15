@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: -5115523363914549353}
   m_Layer: 3
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,10 +186,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
+<<<<<<< Updated upstream
   heartPickup: {fileID: 7827798412670924074, guid: 4520fb7bb7daea7498d400388ba9f87b, type: 3}
   enemyHitSound: {fileID: -5115523363914549353}
   deathSoundEmitter: {fileID: 5288547248218548337, guid: ac5d886ec8c52044eab5c5fb5147a7e3, type: 3}
   speed: 9
+=======
+  speed: 20
+>>>>>>> Stashed changes
   health: 5
   damage: 1
 --- !u!50 &7617203449426593272

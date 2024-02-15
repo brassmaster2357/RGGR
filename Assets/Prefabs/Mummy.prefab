@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7055348427332987554}
   m_Layer: 0
   m_Name: Mummy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,10 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
+<<<<<<< Updated upstream
   heartPickup: {fileID: 7827798412670924074, guid: 4520fb7bb7daea7498d400388ba9f87b, type: 3}
   enemyHitSound: {fileID: 7055348427332987554}
   deathSoundEmitter: {fileID: 5288547248218548337, guid: ac5d886ec8c52044eab5c5fb5147a7e3, type: 3}
-  speed: 3
+  speed: 20
   health: 7
   damage: 1
   chargeUpTime: 1

@@ -226,17 +226,21 @@ PrefabInstance:
       propertyPath: hudControl
       value: 
       objectReference: {fileID: 513269431}
+    - target: {fileID: 8191744590608488045, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8191744590608488047, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8191744590608488047, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.2
       objectReference: {fileID: 0}
     - target: {fileID: 8191744590608488047, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 8191744590608488047, guid: 09ceb772489fd9640a8d3f2bb02003fe, type: 3}
       propertyPath: m_LocalPosition.z
