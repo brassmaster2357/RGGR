@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 cooldown = cooldownBase;
                 GameObject b = Instantiate(bullet, transform);
                 b.transform.position = transform.position;
-                Physics2D.IgnoreCollision(b.GetComponent<CircleCollider2D>(), GetComponent<BoxCollider2D>());
+                Physics2D.IgnoreCollision(b.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
                 b.GetComponent<Rigidbody2D>().AddForce((1 / rightStick.magnitude) * bulletVelocity * rightStick);
                 Destroy(b, 1);
             }
@@ -136,6 +136,8 @@ public class PlayerController : MonoBehaviour
         else
             invincibilityFlash.a = 1;
         playerSprite.color = invincibilityFlash;
+
+        transform.position = new(rb.position.x, rb.position.y, rb.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
     }
 
     private void OnTriggerStay2D(Collider2D collision)

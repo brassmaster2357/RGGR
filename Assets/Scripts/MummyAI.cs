@@ -59,6 +59,7 @@ public class MummyAI : MonoBehaviour
                 charging = true;
             }
         }
+        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
         //if dead, die
         if (health <= 0)
             Destroy(this.gameObject);
