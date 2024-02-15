@@ -1859,7 +1859,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: North West (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3568514304843237091, guid: 8b07aed03e7a5434e95a9d58694f62f4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
