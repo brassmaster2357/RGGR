@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             {
                 //show options menu
             }
-            if (controller.yButton.wasPressedThisFrame)
+            if (controller.xButton.wasPressedThisFrame)
             {
                 GameObject credits = GameObject.Find("Canvas").transform.GetChild(0).gameObject; // why public variable when can GetChild()
                 if (credits.activeSelf)
