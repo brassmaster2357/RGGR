@@ -12,6 +12,9 @@ public class SkeletonAI : MonoBehaviour
     Rigidbody2D myRB;
     SpriteRenderer sprite;
 
+    public AudioSource enemyHitSound;
+    public GameObject deathSoundEmitter;
+
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
     public List<Vector2> waypoints;
     int currentWaypoint;
@@ -89,6 +92,7 @@ public class SkeletonAI : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             health -= PC.damage;
+            enemyHitSound.Play();
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
             Destroy(collision.gameObject);
@@ -125,6 +129,7 @@ public class SkeletonAI : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
+        Instantiate(deathSoundEmitter, transform.position, Quaternion.identity);
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
         coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
         if (Random.Range(0f, 1f) >= 0.95f)

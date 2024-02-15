@@ -10,6 +10,9 @@ public class SkeletonBoss : MonoBehaviour
     PlayerController PC;
     Rigidbody2D myRB;
 
+    public AudioSource enemyHitSound;
+    public GameObject deathSoundEmitter;
+
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
     public List<Vector2> waypoints;
     Vector2 currentWaypoint;

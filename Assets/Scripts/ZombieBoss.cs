@@ -10,6 +10,9 @@ public class ZombieBoss : MonoBehaviour
     PlayerController player;
     Rigidbody2D myRB;
 
+    public AudioSource enemyHitSound;
+    public GameObject deathSoundEmitter;
+
     public float baseSpeed;
     float speed;
     public float health;

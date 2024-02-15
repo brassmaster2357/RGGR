@@ -12,6 +12,9 @@ public class ZombieAI : MonoBehaviour
     Rigidbody2D myRB;
     SpriteRenderer sprite;
 
+    public AudioSource enemyHitSound;
+    public GameObject deathSoundEmitter;
+
     public float speed;
     public float health;
     public int damage;
@@ -42,6 +45,7 @@ public class ZombieAI : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             health -= player.damage;
+            enemyHitSound.Play();
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
@@ -58,6 +62,7 @@ public class ZombieAI : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
+        Instantiate(deathSoundEmitter, transform.position, Quaternion.identity);
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
         coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
         if (Random.Range(0f,1f) >= 0.95f)

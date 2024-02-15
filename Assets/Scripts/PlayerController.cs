@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public bool gettingModifiers;
     public HUDControl hudControl;
 
+    public AudioSource playerHitSound;
+    public AudioSource fireSound;
+
     public float maxSpeed = 8f;
     public int maxHealth = 6;
     public float cooldownBase = 0.25f;
@@ -111,6 +114,7 @@ public class PlayerController : MonoBehaviour
             {
                 cooldown = cooldownBase;
                 GameObject b = Instantiate(bullet, transform);
+                fireSound.Play();
                 b.transform.position = transform.position;
                 Physics2D.IgnoreCollision(b.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
                 b.GetComponent<Rigidbody2D>().AddForce((1 / rightStick.magnitude) * bulletVelocity * rightStick);
@@ -199,10 +203,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Pickup") || collision.gameObject.CompareTag("Relic") || collision.gameObject.CompareTag("Staircase"))
-        {
-            pickupIndicator.enabled = false;
-        }
+        pickupIndicator.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
