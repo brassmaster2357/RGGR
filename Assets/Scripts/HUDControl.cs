@@ -119,6 +119,7 @@ public class HUDControl : MonoBehaviour
             {
                 case StatMod.EStat.Health:
                     pc.healthMax += (int)modifier.mods[i];
+                    pc.health += (int)modifier.mods[i];
                     break;
                 case StatMod.EStat.Speed:
                     pc.maxSpeed *= modifier.mods[i];

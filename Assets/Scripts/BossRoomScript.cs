@@ -15,6 +15,7 @@ public class BossRoomScript : MonoBehaviour
         {
             GameObject newRoomEpic = Instantiate(replacePrefab);
             newRoomEpic.transform.SetPositionAndRotation(room.transform.position, room.transform.rotation);
+            cameraController.shakeFalloff = 0.95f;
             cameraController.InitiateCameraShake(5);
             Destroy(room);
             Destroy(this.gameObject);
