@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Brawler
   m_EditorClassIdentifier: 
   art: {fileID: 0}
-  description: []
-  stats: 
-  mods: []
+  description:
+  - +3 Hearts
+  - +1 sec Invulnerability
+  - Melee only
+  stats: 000000000200000005000000
+  mods:
+  - 6
+  - 1
+  - 1e+9

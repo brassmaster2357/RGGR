@@ -16,7 +16,7 @@ MonoBehaviour:
   description:
   - +1 Heart
   - +0.5 sec. Invulnerability
-  - -25% Speed
+  - -15% Speed
   stats: 000000000200000001000000
   mods:
   - 2

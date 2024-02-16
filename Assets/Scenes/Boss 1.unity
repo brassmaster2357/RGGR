@@ -962,6 +962,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2137620112}
     - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 705092432}

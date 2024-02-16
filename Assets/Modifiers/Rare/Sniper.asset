@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - 
-  - 
-  - 
+  - x2 Bullet Damage
+  - x2 Bullet Speed
+  - x2 Firing Cooldown
   stats: 030000000400000005000000
-  mods: []
+  mods:
+  - 2
+  - 2
+  - 2

@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: One-Hit Wonder
   m_EditorClassIdentifier: 
   art: {fileID: 0}
-  description: []
-  stats: 
-  mods: []
+  description:
+  - x3 Bullet Damage
+  - x0.33 Firing Cooldown
+  - You will die in one hit
+  stats: 030000000500000000000000
+  mods:
+  - 3
+  - 0.33
+  - -999

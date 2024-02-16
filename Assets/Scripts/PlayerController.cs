@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         if (rollDelay <= 0)
         {
             rb.AddForce(225 * maxSpeed * leftStick.normalized);
-            invul = 0.55f;
+            invul = 0.55f * invulMax;
             rollDelay = 2.5f;
         }
     }
@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour
         {
             cam.InitiateCameraShake(damage);
             health -= damage;
-            invul = 1;
+            invul = 1 * invulMax;
         }
     }
 }
