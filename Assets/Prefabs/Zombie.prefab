@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 7617203449426593274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.6367471, y: 1.0865941, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 906817689339008858}
@@ -186,14 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
-<<<<<<< Updated upstream
   heartPickup: {fileID: 7827798412670924074, guid: 4520fb7bb7daea7498d400388ba9f87b, type: 3}
   enemyHitSound: {fileID: -5115523363914549353}
   deathSoundEmitter: {fileID: 5288547248218548337, guid: ac5d886ec8c52044eab5c5fb5147a7e3, type: 3}
-  speed: 9
-=======
   speed: 20
->>>>>>> Stashed changes
   health: 5
   damage: 1
 --- !u!50 &7617203449426593272

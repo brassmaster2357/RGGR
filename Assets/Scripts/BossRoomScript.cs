@@ -8,11 +8,14 @@ public class BossRoomScript : MonoBehaviour
     public GameObject room;
     public GameObject replacePrefab;
     public CameraController cameraController;
+	
+	bool setup = true;
 
     void Update()
     {
-        if (boss == null)
+        if (boss == null && setup)
         {
+			setup = false;
             GameObject newRoomEpic = Instantiate(replacePrefab);
             newRoomEpic.transform.SetPositionAndRotation(room.transform.position, room.transform.rotation);
             cameraController.shakeFalloff = 0.95f;

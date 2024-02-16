@@ -9,6 +9,7 @@ public class SkeletonBoss : MonoBehaviour
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
+    SpriteRenderer sprite;
 
     public AudioSource enemyHitSound;
     public GameObject deathSoundEmitter;
@@ -45,6 +46,7 @@ public class SkeletonBoss : MonoBehaviour
         target = GameObject.Find("Player");
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         timer = 0;
         timer2 = 0;
 
@@ -86,6 +88,9 @@ public class SkeletonBoss : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
+        sprite.flipX = myRB.velocity.x >= 0;
+		
         if (!bulletsShooting)
         {
             if (timer2 < restTime)
@@ -160,6 +165,11 @@ public class SkeletonBoss : MonoBehaviour
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
             Destroy(collision.gameObject);
+			if (Random.Range(0f,1f) >= 0.985f)
+			{
+				GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+			}
         }
     }
 
@@ -192,14 +202,10 @@ public class SkeletonBoss : MonoBehaviour
             case 2:
                 pattern = pattern2;
                 break;
-            case 3:
+            default:
                 pattern = pattern3;
                 break;
-            default:
-                pattern = pattern4;
-                break;
         }
-        pattern = pattern2;
         foreach (Arrow arrow in pattern)
         {
             GameObject gameObject = Instantiate(projectile, new Vector2(1000, 1000), Quaternion.identity);

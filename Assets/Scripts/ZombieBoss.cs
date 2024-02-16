@@ -36,8 +36,8 @@ public class ZombieBoss : MonoBehaviour
         player = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
         mySR = GetComponent<SpriteRenderer>();
-        baseGreen = new Color(63f / 255f, 89f / 255f, 57f / 255f);
-        lightGreen = new Color(81f / 255f, 159f / 255f, 58f / 255f);
+        baseGreen = new Color(1,1,1);
+        lightGreen = new Color(0.75f,0.75f,0.75f);
         timer = 0;
         timer2 = 0;
         speed = baseSpeed;
@@ -46,6 +46,9 @@ public class ZombieBoss : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
+        mySR.flipX = myRB.velocity.x >= 0;
+		
         if (isCharging)
         {
             //add force to go towards the player
@@ -98,6 +101,11 @@ public class ZombieBoss : MonoBehaviour
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
+			if (Random.Range(0f,1f) >= 0.985f)
+			{
+				GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+			}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -2014,3 +2014,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8669166120667754766, guid: 8e413eb46c7d8b946bc18953208c1e9e, type: 3}
   m_PrefabInstance: {fileID: 2077277584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2144157661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3454940334032526350, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526350, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_Color.g
+      value: 0.73496693
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526350, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_Color.r
+      value: 0.624911
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526351, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454940334032526577, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}
+      propertyPath: m_Name
+      value: Scuffed-ish Pedestal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66de50f389193bf49bf5a0e469e447de, type: 3}

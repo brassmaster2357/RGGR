@@ -12,6 +12,7 @@ public class MummyBoss : MonoBehaviour
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
+    SpriteRenderer sprite;
 
     public float speed;
     public float health;
@@ -46,6 +47,7 @@ public class MummyBoss : MonoBehaviour
         target = GameObject.Find("Player");
         player = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         chaseTime = 2;
         charging = false;
         timer = 0;
@@ -57,6 +59,9 @@ public class MummyBoss : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
+        sprite.flipX = myRB.velocity.x >= 0;
+		
         if (isSummoning)
         {
             if (!arrived)
@@ -196,6 +201,11 @@ public class MummyBoss : MonoBehaviour
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force * player.knockback * 1 / 2);
             Destroy(collision.gameObject);
+			if (Random.Range(0f,1f) >= 0.985f)
+			{
+				GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+			}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
