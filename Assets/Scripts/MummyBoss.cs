@@ -10,6 +10,9 @@ public class MummyBoss : MonoBehaviour
     public GameObject skele;
     public GameObject mummy;
 
+    public AudioSource enemyHitSound;
+    public GameObject deathSoundEmitter;
+
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
@@ -220,10 +223,12 @@ public class MummyBoss : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
-        for (int i = 0; i < Random.Range(10, 31); i++)
+        GameObject oof = Instantiate(deathSoundEmitter, transform.position, Quaternion.identity);
+        Destroy(oof, 3);
+        for (int i = 0; i < Random.Range(20, 61); i++)
         {
             GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
-            coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f));
+            coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-7.5f, 7.5f));
         }
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject deathTarget in enemies)

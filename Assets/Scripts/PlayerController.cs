@@ -118,7 +118,8 @@ public class PlayerController : MonoBehaviour
                 b.transform.position = transform.position;
                 Physics2D.IgnoreCollision(b.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
                 b.GetComponent<Rigidbody2D>().AddForce((1 / rightStick.magnitude) * bulletVelocity * rightStick);
-                Destroy(b, 1);
+                b.GetComponent<Rigidbody2D>().SetRotation(Vector2.SignedAngle(Vector2.up, rightStick));
+                Destroy(b, 3);
             }
         }
 
@@ -220,6 +221,7 @@ public class PlayerController : MonoBehaviour
 
     public void Damage(int damage)
     {
+        playerHitSound.Play();
         if (invul <= 0)
         {
             cam.InitiateCameraShake(damage);

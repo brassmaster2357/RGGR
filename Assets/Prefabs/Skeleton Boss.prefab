@@ -247,8 +247,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4ed7369beb172c6469b03e2c835a2cc9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.4
+  m_Pitch: 0.7
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -345,8 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
   heartPickup: {fileID: 7827798412670924074, guid: 4520fb7bb7daea7498d400388ba9f87b, type: 3}
-  enemyHitSound: {fileID: 0}
-  deathSoundEmitter: {fileID: 0}
+  enemyHitSound: {fileID: 37191058990066896}
+  deathSoundEmitter: {fileID: 5288547248218548337, guid: ac5d886ec8c52044eab5c5fb5147a7e3, type: 3}
   waypoints:
   - {x: -13, y: -5}
   - {x: -13, y: 5}

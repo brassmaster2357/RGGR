@@ -106,7 +106,7 @@ public class SkeletonAI : MonoBehaviour
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0,0,angle);
         arrow.GetComponent<Rigidbody2D>().velocity = arrow.transform.up * projSpeed;
-        Destroy(arrow, 1);
+        Destroy(arrow, 3);
     }
     int NewWaypoint(bool next)
     {
@@ -129,7 +129,8 @@ public class SkeletonAI : MonoBehaviour
     private void OnDestroy()
     {
         if (!gameObject.scene.isLoaded) return;
-        Instantiate(deathSoundEmitter, transform.position, Quaternion.identity);
+        GameObject oof = Instantiate(deathSoundEmitter, transform.position, Quaternion.identity);
+        Destroy(oof, 1);
         GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
         coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
         if (Random.Range(0f, 1f) >= 0.95f)
