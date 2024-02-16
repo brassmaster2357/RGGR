@@ -1293,9 +1293,22 @@ MonoBehaviour:
   poweringUpScreen: {fileID: 4444243652857445852}
   modifiers:
   - {fileID: 11400000, guid: c700c2e1b43ecad4fa9f22c90421bc6d, type: 2}
+  - {fileID: 11400000, guid: 1f53bbb33888e6b439a0fbce5b074ff6, type: 2}
+  - {fileID: 11400000, guid: 7a7aa686620537b41a6c47b35818715d, type: 2}
   - {fileID: 11400000, guid: 740e4286b4b2c5b4da47221df7a4f427, type: 2}
   - {fileID: 11400000, guid: c1551891dc2a0ea429b4f3863721ec04, type: 2}
+  - {fileID: 11400000, guid: 0eeb9c8f3fa206f4a93a980bc4f44495, type: 2}
   - {fileID: 11400000, guid: eaee64082ee820846a5449d95358e9ed, type: 2}
+  - {fileID: 11400000, guid: 7e222b3b097187d4cb4d6af89526c3be, type: 2}
+  - {fileID: 11400000, guid: 2953d1ac78b985d4182fc96f3b733f8d, type: 2}
+  - {fileID: 11400000, guid: e97ae2f00bf51c24c8d5f2e8bb55b085, type: 2}
+  - {fileID: 11400000, guid: 5bcb4cbb6e62ca44e8f41d999bbab524, type: 2}
+  - {fileID: 11400000, guid: 05dcc264b32e43943973b3ccba3942b1, type: 2}
+  - {fileID: 11400000, guid: 94fbfd2e887543c4aa0541ff7f747a65, type: 2}
+  rareModifiers:
+  - {fileID: 11400000, guid: fe4b913ae80f09f4490d3e47e54fceb4, type: 2}
+  - {fileID: 11400000, guid: 1ca6fae017623a649951b7db2f66594d, type: 2}
+  - {fileID: 11400000, guid: 71163e76898035746928bd86d33d3d04, type: 2}
   leftMod: {fileID: 0}
   rightMod: {fileID: 0}
   leftImage: {fileID: 4039475961355951840}

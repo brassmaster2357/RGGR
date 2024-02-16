@@ -594,10 +594,26 @@ PrefabInstance:
     - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
       propertyPath: boss
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1647758442}
     - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
       propertyPath: room
       value: 
+      objectReference: {fileID: 1239723964}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.b
+      value: 0.75444996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.g
+      value: 0.75579816
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
+      propertyPath: color.r
+      value: 0.9245283
       objectReference: {fileID: 0}
     - target: {fileID: 4801502909972009910, guid: df3403e7eecb0e444ad6a3997f52b827, type: 3}
       propertyPath: cameraController
@@ -689,6 +705,11 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1215529951684559830, guid: 3b2c08c037aae3143ba1eab9b68a132c, type: 3}
   m_PrefabInstance: {fileID: 1567404336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1239723964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4484459725725631586, guid: eeffc6911c3df444289ae7b057597a4a, type: 3}
+  m_PrefabInstance: {fileID: 1138300243}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1352120897
 PrefabInstance:
@@ -1053,6 +1074,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1647758442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 450952791259823689, guid: fb96b86d422942248a46c1e97a1d77b8, type: 3}
+  m_PrefabInstance: {fileID: 974223964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1834779369
 PrefabInstance:
   m_ObjectHideFlags: 0

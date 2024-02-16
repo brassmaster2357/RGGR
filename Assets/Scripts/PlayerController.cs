@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource playerHitSound;
     public AudioSource fireSound;
+    public GameObject coinSoundPrefab;
 
     public float maxSpeed = 8f;
     public int maxHealth = 6;
@@ -152,7 +153,11 @@ public class PlayerController : MonoBehaviour
         {
             float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
             cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
-            Debug.Log("get moneyed");
+            GameObject coinSoundObj = Instantiate(coinSoundPrefab, transform);
+            AudioSource coinSound = coinSoundObj.GetComponent<AudioSource>();
+            coinSound.pitch = Random.Range(0.85f, 1.15f);
+            coinSound.Play();
+            Destroy(coinSoundObj, 2);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Heart"))

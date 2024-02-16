@@ -12,7 +12,9 @@ public class HUDControl : MonoBehaviour
     public PlayerController pc;
     public Canvas poweringUpScreen;
     private GameManager gm;
+
     public StatMod[] modifiers;
+    public StatMod[] rareModifiers;
 
     private float delayedCash;
     private Vector2 defaultHealthBar = new(40, -25);
@@ -79,7 +81,15 @@ public class HUDControl : MonoBehaviour
         poweringUpScreen.enabled = true;
         gm.PauseNoMenu();
         leftMod = modifiers[Random.Range(0, modifiers.Length)];
+        if (Random.Range(0f,1f) > 0.9f)
+        {
+            leftMod = rareModifiers[Random.Range(0, rareModifiers.Length)];
+        }
         rightMod = modifiers[Random.Range(0, modifiers.Length)];
+        if (Random.Range(0f, 1f) > 0.9f)
+        {
+            rightMod = rareModifiers[Random.Range(0, rareModifiers.Length)];
+        }
         while (rightMod == leftMod)
         {
             rightMod = modifiers[Random.Range(0, modifiers.Length)];
@@ -118,26 +128,40 @@ public class HUDControl : MonoBehaviour
             switch (modifier.stats[i])
             {
                 case StatMod.EStat.Health:
-                    pc.healthMax += (int)modifier.mods[i];
-                    pc.health += (int)modifier.mods[i];
+                    int temp = (int)modifier.mods[i];
+                    pc.healthMax += temp;
+                    if (Mathf.Sign(temp) == -1)
+                    {
+                        if (pc.healthMax < 1)
+                            pc.healthMax = 1;
+                        if (pc.health >= pc.healthMax)
+                            pc.health = pc.healthMax;
+                    } else
+                        pc.health += temp;
                     break;
                 case StatMod.EStat.Speed:
                     pc.maxSpeed *= modifier.mods[i];
+                    if (pc.maxSpeed < 0.25f) pc.maxSpeed = 0.25f;
                     break;
                 case StatMod.EStat.InvTime:
                     pc.invulMax += modifier.mods[i];
+                    if (pc.invulMax < 0.1f) pc.invulMax = 0.1f;
                     break;
                 case StatMod.EStat.BulletDamage:
                     pc.damage *= modifier.mods[i];
+                    if (pc.damage < 0.1f) pc.damage = 0.1f;
                     break;
                 case StatMod.EStat.BulletSpeed:
                     pc.bulletVelocity *= modifier.mods[i];
+                    if (pc.bulletVelocity < 0.25f) pc.bulletVelocity = 0.25f;
                     break;
                 case StatMod.EStat.FireRate:
                     pc.cooldownBase *= modifier.mods[i];
+                    if (pc.cooldownBase < 0.025f) pc.cooldownBase = 0.025f;
                     break;
                 case StatMod.EStat.MoneyGained:
                     pc.moneyMult *= modifier.mods[i];
+                    // If you somehow mess up bad enough to get a *negative* money multiplier, that's your own fault.
                     break;
                 default:
                     Debug.Log("LOSER L LOSER NO MODIFICATIONS LOSER L + RATIO");

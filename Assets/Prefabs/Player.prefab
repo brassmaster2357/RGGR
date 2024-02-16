@@ -351,6 +351,7 @@ MonoBehaviour:
   hudControl: {fileID: 0}
   playerHitSound: {fileID: -8659127317550658002}
   fireSound: {fileID: -4622148661577587414}
+  coinSoundPrefab: {fileID: 1486257172617301928, guid: 8ac94e84d8a404148a6f25889b457bd9, type: 3}
   maxSpeed: 8
   maxHealth: 6
   cooldownBase: 0.25
