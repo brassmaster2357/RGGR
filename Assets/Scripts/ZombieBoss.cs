@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZombieBoss : MonoBehaviour
 {
     public GameObject money;
+    public GameObject heartPickup;
 
     GameObject target;
     PlayerController player;

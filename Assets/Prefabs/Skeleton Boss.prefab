@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 7827798412670924074, guid: fc5050a308f825943a4be58c9ab38b43, type: 3}
+  heartPickup: {fileID: 7827798412670924074, guid: 4520fb7bb7daea7498d400388ba9f87b, type: 3}
   enemyHitSound: {fileID: 0}
   deathSoundEmitter: {fileID: 0}
   waypoints:

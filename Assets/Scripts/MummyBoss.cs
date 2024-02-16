@@ -5,6 +5,7 @@ using UnityEngine;
 public class MummyBoss : MonoBehaviour
 {
     public GameObject money;
+    public GameObject heartPickup;
     public GameObject zombie;
     public GameObject skele;
     public GameObject mummy;
