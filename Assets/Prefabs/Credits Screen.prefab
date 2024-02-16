@@ -142,33 +142,36 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>CREDITS</b>
+  m_text: '<b>CREDITS
 
     ---
 
-    DIRECTOR - Nicholas
+    DIRECTOR</b> - Nicholas
 
 
-    PLAYER MOVEMENT
+    <b>PLAYER MOVEMENT</b>
     - Nicholas
 
-    ENEMY AND BOSS AI - Jake
+    <b>ENEMY AND BOSS AI</b> - Jake
 
-    ENEMY SPAWNING - Tyler
+    <b>ENEMY SPAWNING</b> -
+    Tyler
 
-    MAPS
-    - Tyler
-
-
-    ART - Aspen
-
-    MISC SPRITES - Nicholas, Tyler
+    <b>MAPS</b> - Tyler
 
 
-    MUSIC - Nicholas
+    <b>ART: MAP, PLAYER, ENEMIES, ITEMS</b>
+    - Aspen
 
-    SFX
-    - Tyler
+    <b>MISC SPRITES</b> - Nicholas, Tyler
+
+    <b>"Poggert Grave" (MENU
+    BG)</b> - Nicholas
+
+
+    <b>MUSIC</b> - Nicholas
+
+    <b>SFX</b> - Tyler
 
 
 '
