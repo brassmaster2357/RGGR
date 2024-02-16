@@ -10,7 +10,7 @@ public class SkeletonBoss : MonoBehaviour
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
-    SpriteRenderer sprite;
+    SpriteControl spriteControl;
 
     public AudioSource enemyHitSound;
     public GameObject deathSoundEmitter;
@@ -47,7 +47,7 @@ public class SkeletonBoss : MonoBehaviour
         target = GameObject.Find("Player");
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        spriteControl = GetComponent<SpriteControl>();
         timer = 0;
         timer2 = 0;
 
@@ -89,9 +89,7 @@ public class SkeletonBoss : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
-        sprite.flipX = myRB.velocity.x >= 0;
-		
+        spriteControl.input = target.transform.position - transform.position;
         if (!bulletsShooting)
         {
             if (timer2 < restTime)

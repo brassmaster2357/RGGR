@@ -141,23 +141,28 @@ public class HUDControl : MonoBehaviour
                     break;
                 case StatMod.EStat.Speed:
                     pc.maxSpeed *= modifier.mods[i];
-                    if (pc.maxSpeed < 0.25f) pc.maxSpeed = 0.25f;
+                    if (pc.maxSpeed < 0.25f)
+                        pc.maxSpeed = 0.25f;
                     break;
                 case StatMod.EStat.InvTime:
                     pc.invulMax += modifier.mods[i];
-                    if (pc.invulMax < 0.1f) pc.invulMax = 0.1f;
+                    if (pc.invulMax < 0.1f)
+                        pc.invulMax = 0.1f;
                     break;
                 case StatMod.EStat.BulletDamage:
                     pc.damage *= modifier.mods[i];
-                    if (pc.damage < 0.1f) pc.damage = 0.1f;
+                    if (pc.damage < 0.1f)
+                        pc.damage = 0.1f;
                     break;
                 case StatMod.EStat.BulletSpeed:
                     pc.bulletVelocity *= modifier.mods[i];
-                    if (pc.bulletVelocity < 0.25f) pc.bulletVelocity = 0.25f;
+                    if (pc.bulletVelocity < 0.25f)
+                        pc.bulletVelocity = 0.25f;
                     break;
                 case StatMod.EStat.FireRate:
                     pc.cooldownBase *= modifier.mods[i];
-                    if (pc.cooldownBase < 0.025f) pc.cooldownBase = 0.025f;
+                    if (pc.cooldownBase < 0.025f)
+                        pc.cooldownBase = 0.025f;
                     break;
                 case StatMod.EStat.MoneyGained:
                     pc.moneyMult *= modifier.mods[i];

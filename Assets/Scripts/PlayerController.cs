@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private CameraController cam;
     private GameManager gm;
     private SpriteRenderer playerSprite;
+    private SpriteControl spriteControl;
     private Color invincibilityFlash = new(1,1,1,1);
     public bool gettingModifiers;
     public HUDControl hudControl;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         cam = GameObject.Find("Main Camera").GetComponent<CameraController>();
         gm = GameObject.Find("GameManagr").GetComponent<GameManager>();
         playerSprite = GetComponent<SpriteRenderer>();
+        spriteControl = GetComponent<SpriteControl>();
         controller = UnityEngine.InputSystem.Gamepad.current;
         pickupIndicator.enabled = false;
         playerStatCarryOver.Apply(this);
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         // Right stick (shooting)
         if (rightStick.magnitude > deadzone)
         {
+            spriteControl.input = rightStick;
             if (cooldown <= 0)
             {
                 cooldown = cooldownBase;
@@ -123,6 +126,8 @@ public class PlayerController : MonoBehaviour
                 Destroy(b, 3);
             }
         }
+        else
+            spriteControl.input = leftStick;
 
         // Time related stuff
         if (health <= 0)
@@ -142,9 +147,6 @@ public class PlayerController : MonoBehaviour
         else
             invincibilityFlash.a = 1;
         playerSprite.color = invincibilityFlash;
-
-        transform.position = new(rb.position.x, rb.position.y, rb.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
-        playerSprite.flipX = velocity.x >= 0;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

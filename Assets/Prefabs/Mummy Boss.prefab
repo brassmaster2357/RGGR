@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 450952791259823691}
   - component: {fileID: 2329613323700371574}
   - component: {fileID: -8312414398881359772}
+  - component: {fileID: 3628543914698737687}
   m_Layer: 0
   m_Name: Mummy Boss
   m_TagString: Enemy
@@ -273,6 +274,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3628543914698737687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450952791259823689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e737d87c59e70a46a130b72bdbcaea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRotates: 1
+  customInput: 0
+  input: {x: 0, y: 0}
+  spriteDefault: {fileID: 21300000, guid: 36259d42a410c0b4b99e3039e5476570, type: 3}
+  spriteNorth: {fileID: 21300000, guid: 36259d42a410c0b4b99e3039e5476570, type: 3}
+  spriteSouth: {fileID: 21300000, guid: 841ab2376fbd5944cacb6f48e5e1d75b, type: 3}
+  spriteEast: {fileID: 21300000, guid: 841ab2376fbd5944cacb6f48e5e1d75b, type: 3}
+  spriteWest: {fileID: 21300000, guid: 36259d42a410c0b4b99e3039e5476570, type: 3}
 --- !u!1 &7535553418354865879
 GameObject:
   m_ObjectHideFlags: 0

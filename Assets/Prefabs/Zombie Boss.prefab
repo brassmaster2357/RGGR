@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4631152648974723841}
   - component: {fileID: 3022081246407276585}
   - component: {fileID: 7059370712763981706}
+  - component: {fileID: 4815418048669850328}
   m_Layer: 3
   m_Name: Zombie Boss
   m_TagString: Untagged
@@ -352,3 +353,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4815418048669850328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631152648974723847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e737d87c59e70a46a130b72bdbcaea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRotates: 1
+  customInput: 0
+  input: {x: 0, y: 0}
+  spriteDefault: {fileID: 21300000, guid: 20437c480d63e0b49b8199fc4d817822, type: 3}
+  spriteNorth: {fileID: 21300000, guid: 20437c480d63e0b49b8199fc4d817822, type: 3}
+  spriteSouth: {fileID: 21300000, guid: cc48d272d7e836a468055da722028f0c, type: 3}
+  spriteEast: {fileID: 21300000, guid: cc48d272d7e836a468055da722028f0c, type: 3}
+  spriteWest: {fileID: 21300000, guid: 20437c480d63e0b49b8199fc4d817822, type: 3}

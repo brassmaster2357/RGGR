@@ -10,7 +10,7 @@ public class SkeletonAI : MonoBehaviour
     GameObject target;
     PlayerController PC;
     Rigidbody2D myRB;
-    SpriteRenderer sprite;
+    SpriteControl spriteControl;
 
     public AudioSource enemyHitSound;
     public GameObject deathSoundEmitter;
@@ -36,7 +36,7 @@ public class SkeletonAI : MonoBehaviour
         target = GameObject.Find("Player");
         PC = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        spriteControl = GetComponent<SpriteControl>();
         timer = 0;
 
         //only initialize these if the skeleton has places to go
@@ -51,6 +51,7 @@ public class SkeletonAI : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        spriteControl.input = target.transform.position - transform.position;
         //dont run this code in sentry mode
         if (waypoints.Count >= 2)
         {
@@ -66,11 +67,6 @@ public class SkeletonAI : MonoBehaviour
                 direction = (Vector3)(waypoints[currentWaypoint] - (Vector2)(transform.position)).normalized;
                 distTrack = 0;
             }
-        }
-        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
-        if (Mathf.Abs(direction.x) > 0.1f)
-        {
-            sprite.flipX = direction.x >= 0;
         }
 
         // if dead, die

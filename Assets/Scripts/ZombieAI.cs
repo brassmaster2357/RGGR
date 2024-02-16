@@ -10,7 +10,6 @@ public class ZombieAI : MonoBehaviour
     GameObject target;
     PlayerController player;
     Rigidbody2D myRB;
-    SpriteRenderer sprite;
 
     public AudioSource enemyHitSound;
     public GameObject deathSoundEmitter;
@@ -25,15 +24,11 @@ public class ZombieAI : MonoBehaviour
         target = GameObject.Find("Player");
         player = target.GetComponent<PlayerController>();
         myRB = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
     }
     private void FixedUpdate()
     {
         //add force to go towards the player
         myRB.AddForce((target.transform.position - transform.position).normalized * speed);
-
-        transform.position = new(myRB.position.x, myRB.position.y, myRB.position.y / 1000f); // Move Z very slightly depending on Y value to do more precise and automatic layer sorting
-        sprite.flipX = myRB.velocity.x >= 0;
 
         //if dead, die
         if (health <= 0)
