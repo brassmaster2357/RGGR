@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public bool aButton;
     public bool bButton;
     public bool xButton;
+    public bool yButton;
 
     void Start()
     {
@@ -78,17 +79,24 @@ public class PlayerController : MonoBehaviour
             aButton = true;
         else
             aButton = false;
+
         if (controller.bButton.isPressed)
             bButton = true;
         else
             bButton = false;
+
         if (controller.xButton.isPressed)
             xButton = true;
         else
             xButton = false;
+
+        if (controller.yButton.wasPressedThisFrame)
+            cooHWhip();
+
         if (controller.startButton.wasPressedThisFrame && !gettingModifiers)
             gm.PressedPauseButton();
-        if (controller.leftStickButton.wasPressedThisFrame)
+
+        if (controller.leftShoulder.wasPressedThisFrame)
             Roll();
     }
 
@@ -207,6 +215,30 @@ public class PlayerController : MonoBehaviour
             invul = 0.55f * invulMax;
             rollDelay = 2.5f;
         }
+    }
+
+    //dont correct spelling, trust
+    private void cooHWhip(){
+        string dir = "";
+        Debug.Log("https://www.youtube.com/watch?v=nfVEvgWd4ek");
+        if (leftStick == Vector2.zero){
+            dir = "down";
+        }
+        else if (Mathf.Abs(leftStick.x) > Mathf.Abs(leftStick.y))
+        {
+            if (leftStick.x > 0)
+                dir = "right";
+            else if (leftStick.x < 0)
+                dir = "left";
+        }
+        else if (Mathf.Abs(leftStick.y) > Mathf.Abs(leftStick.x))
+        {
+            if (leftStick.y > 0)
+                dir = "up";
+            else if (leftStick.y < 0)
+                dir = "down";
+        }
+        Debug.Log("whip " + dir);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

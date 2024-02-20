@@ -1,4 +1,3 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,6 @@ public class RoomScript : MonoBehaviour
     // no need, it will auto spawn them
 
     public GameObject epicreveal;
-    private bool cleared = false;
     public GameObject[] enemies;
     private int enemyCount;
     private GameObject enemy;

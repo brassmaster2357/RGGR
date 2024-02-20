@@ -31,9 +31,6 @@ public class SpriteControl : MonoBehaviour
             input = rb.velocity.normalized;
 
         }
-            
-
-        Debug.Log(input);
 
         if (input == Vector2.zero){
             activeSprite = spriteDefault;
