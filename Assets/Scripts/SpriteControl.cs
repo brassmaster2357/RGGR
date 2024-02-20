@@ -27,23 +27,29 @@ public class SpriteControl : MonoBehaviour
 
     void Update()
     {
-        if (!customInput)
-            input = rb.velocity;
+        if (!customInput){
+            input = rb.velocity.normalized;
 
-        if (input.magnitude <= 0.01f)
+        }
+            
+
+        Debug.Log(input);
+
+        if (input == Vector2.zero){
             activeSprite = spriteDefault;
-        else if (input.x > input.y)
+        }
+        else if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
         {
-            if (Mathf.Sign(input.x) >= 0)
+            if (input.x > 0)
                 activeSprite = spriteEast;
-            else
+            else if (input.x < 0)
                 activeSprite = spriteWest;
         }
-        else
+        else if (Mathf.Abs(input.y) > Mathf.Abs(input.x))
         {
-            if (Mathf.Sign(input.y) >= 0)
+            if (input.y > 0)
                 activeSprite = spriteNorth;
-            else
+            else if (input.y < 0)
                 activeSprite = spriteSouth;
         }
 

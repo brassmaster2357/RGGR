@@ -579,9 +579,9 @@ MonoBehaviour:
   objectRotates: 1
   customInput: 1
   input: {x: 0, y: 0}
-  spriteDefault: {fileID: 21300000, guid: ef463ef2248cf3646b51b0bafbe0663b, type: 3}
-  spriteNorth: {fileID: 21300000, guid: ef463ef2248cf3646b51b0bafbe0663b, type: 3}
-  spriteSouth: {fileID: 21300000, guid: 1f8c396e6d4e7234990e0297587d0e10, type: 3}
+  spriteDefault: {fileID: 21300000, guid: 21923a9d840e38a428dbd1020e865c04, type: 3}
+  spriteNorth: {fileID: 21300000, guid: cad57e080d61cb141b816ff4c16ce79d, type: 3}
+  spriteSouth: {fileID: 21300000, guid: 21923a9d840e38a428dbd1020e865c04, type: 3}
   spriteEast: {fileID: 21300000, guid: 1f8c396e6d4e7234990e0297587d0e10, type: 3}
   spriteWest: {fileID: 21300000, guid: ef463ef2248cf3646b51b0bafbe0663b, type: 3}
 --- !u!1 &8898143523284722586
