@@ -27,6 +27,10 @@ public class RoomScript : MonoBehaviour
         {
             enemyCount = 5;
         }
+        else if (SceneManager.GetActiveScene().name == "6 Toriels")
+        {
+            enemyCount = 1;
+        }
 
         for (int i = 0; i < enemyCount; i++)
         {

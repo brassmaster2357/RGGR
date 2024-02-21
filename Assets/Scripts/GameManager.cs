@@ -167,6 +167,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        playerStatCarryOver.health = playerStatCarryOver.healthMax;
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 

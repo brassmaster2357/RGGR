@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: e3d2803caeeec8947a88cbd0de8e4b65
   - enabled: 1
+    path: Assets/Scenes/6 Toriels.unity
+    guid: 880fb3a6abb43d84fbbb18cfa6ad2ee2
+  - enabled: 1
     path: Assets/Scenes/Floor 1.unity
     guid: 2df692000954854409d9de92fec137b4
   - enabled: 1
