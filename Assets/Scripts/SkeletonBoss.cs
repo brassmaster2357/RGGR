@@ -171,6 +171,15 @@ public class SkeletonBoss : MonoBehaviour
 				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f));
 			}
         }
+        //if collide with whip, take damage, get knocked back
+        if (collision.gameObject.tag == "Whip")
+        {
+            health -= PC.damage * 1.5f;
+            enemyHitSound.Play();
+            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
+            Destroy(collision.gameObject);
+        }
     }
 
     void Shoot()
