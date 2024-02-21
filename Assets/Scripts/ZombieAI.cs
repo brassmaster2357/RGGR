@@ -36,6 +36,7 @@ public class ZombieAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject.tag);
         //if collide with bullet, take damage and destory bullet
         if (collision.gameObject.tag == "Projectile")
         {
@@ -45,6 +46,7 @@ public class ZombieAI : MonoBehaviour
             myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
         }
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,6 +54,13 @@ public class ZombieAI : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.Damage(damage,myRB.velocity,1);
+        }
+        //if collide with whip, take damage
+        if (collision.gameObject.tag == "Whip")
+        {
+            Debug.Log("Whip");
+            health -= player.damage * 1.5f;
+            enemyHitSound.Play();
         }
     }
     private void OnDestroy()

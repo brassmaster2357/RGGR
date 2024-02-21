@@ -93,6 +93,15 @@ public class SkeletonAI : MonoBehaviour
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
             Destroy(collision.gameObject);
         }
+        //if collide with whip, take damage, get knocked back
+        if (collision.gameObject.tag == "Whip")
+        {
+            health -= PC.damage * 1.5f;
+            enemyHitSound.Play();
+            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
+            Destroy(collision.gameObject);
+        }
     }
 
     void Shoot()

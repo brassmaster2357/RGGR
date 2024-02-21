@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public Vector2 velocity;
     public GameObject bullet;
+    public GameObject whip;
+    private bool canWhip = true;
     public Image pickupIndicator;
     private CameraController cam;
     private GameManager gm;
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
     public bool bButton;
     public bool xButton;
     public bool yButton;
+
+    
 
     void Start()
     {
@@ -89,8 +93,8 @@ public class PlayerController : MonoBehaviour
         else
             xButton = false;
 
-        if (controller.yButton.wasPressedThisFrame)
-            cooHWhip();
+        if (controller.rightShoulder.wasPressedThisFrame)
+            StartCoroutine(cooHWhip());
 
         if (controller.startButton.wasPressedThisFrame && !gettingModifiers)
             gm.PressedPauseButton();
@@ -217,27 +221,59 @@ public class PlayerController : MonoBehaviour
     }
 
     //dont correct spelling, trust
-    private void cooHWhip(){
+    private IEnumerator cooHWhip(){
+        if (!canWhip)
+            yield break;
+        canWhip = false;
         string dir = "";
+        Transform whipObject;
         Debug.Log("https://www.youtube.com/watch?v=nfVEvgWd4ek");
-        if (leftStick == Vector2.zero){
-            dir = "down";
-        }
-        else if (Mathf.Abs(leftStick.x) > Mathf.Abs(leftStick.y))
-        {
-            if (leftStick.x > 0)
-                dir = "right";
-            else if (leftStick.x < 0)
-                dir = "left";
-        }
-        else if (Mathf.Abs(leftStick.y) > Mathf.Abs(leftStick.x))
-        {
-            if (leftStick.y > 0)
-                dir = "up";
-            else if (leftStick.y < 0)
+        if (rightStick != Vector2.zero){
+            if (rightStick == Vector2.zero){
                 dir = "down";
+            }
+            else if (Mathf.Abs(rightStick.x) > Mathf.Abs(rightStick.y))
+            {
+                if (rightStick.x > 0)
+                    dir = "right";
+                else if (rightStick.x < 0)
+                    dir = "left";
+            }
+            else if (Mathf.Abs(rightStick.y) > Mathf.Abs(rightStick.x))
+            {
+                if (rightStick.y > 0)
+                    dir = "up";
+                else if (rightStick.y < 0)
+                    dir = "down";
+            }
+        } 
+        else {
+            if (leftStick == Vector2.zero){
+                dir = "down";
+            }
+            else if (Mathf.Abs(leftStick.x) > Mathf.Abs(leftStick.y))
+            {
+                if (leftStick.x > 0)
+                    dir = "right";
+                else if (leftStick.x < 0)
+                    dir = "left";
+            }
+            else if (Mathf.Abs(leftStick.y) > Mathf.Abs(leftStick.x))
+            {
+                if (leftStick.y > 0)
+                    dir = "up";
+                else if (leftStick.y < 0)
+                    dir = "down";
+            }
         }
+        
+        
+        whipObject = whip.transform.Find(dir);
         Debug.Log("whip " + dir);
+        whipObject.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        whipObject.gameObject.SetActive(false);
+        canWhip = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
