@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteControl : MonoBehaviour
 {
     public bool objectRotates = false;
-
+    public bool horizontalOnly = true;
     public bool customInput = false; // Toggle customInput on to give other vectors, like shooting direction
     public Vector2 input;
 
@@ -35,7 +35,7 @@ public class SpriteControl : MonoBehaviour
         if (input == Vector2.zero){
             activeSprite = spriteDefault;
         }
-        else if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+        else if (Mathf.Abs(input.x) > Mathf.Abs(input.y) || horizontalOnly)
         {
             if (input.x > 0)
                 activeSprite = spriteEast;

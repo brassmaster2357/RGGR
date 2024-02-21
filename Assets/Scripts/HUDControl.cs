@@ -94,8 +94,8 @@ public class HUDControl : MonoBehaviour
         {
             rightMod = modifiers[Random.Range(0, modifiers.Length)];
         }
-        leftImage.sprite = leftMod.art;
-        rightImage.sprite = rightMod.art;
+        //leftImage.sprite = leftMod.art;   // We don't have art for these (yet) so they will serve to show which button to press
+        //rightImage.sprite = rightMod.art;
         leftName.text = leftMod.name;
         rightName.text = rightMod.name;
         leftDesc.text = "";

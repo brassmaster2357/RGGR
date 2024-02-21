@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectRotates: 1
+  horizontalOnly: 1
   customInput: 1
   input: {x: 0, y: 0}
   spriteDefault: {fileID: 21300000, guid: 6cb53512f60e7b04ca15b0af2fda717f, type: 3}
