@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private bool gameOverScreen = false;
     public bool onMenu = false;
     private UnityEngine.InputSystem.Gamepad controller;
+    public GameObject noControllerDetected;
 
     public GameObject pauseIndicator;
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         }
         if (onMenu)
         {
+            noControllerDetected.SetActive(controller == null);
             if (controller.aButton.wasPressedThisFrame)
             {
                 StartGame();
