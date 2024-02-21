@@ -42,7 +42,7 @@ public class PlayerStatCarryOver : ScriptableObject
         maxHealth = player.maxHealth;
         cooldownBase = player.cooldownBase;
         bulletVelocity = player.bulletVelocity;
-        healthMax = player.healthMax;
+        healthMax = player.maxHealth;
         invulMax = player.invulMax;
         damage = player.damage;
         health = player.health;
@@ -59,7 +59,7 @@ public class PlayerStatCarryOver : ScriptableObject
         player.maxHealth = maxHealth;
         player.cooldownBase = cooldownBase;
         player.bulletVelocity = bulletVelocity;
-        player.healthMax = healthMax;
+        player.maxHealth = healthMax;
         player.invulMax = invulMax;
         player.damage = damage;
         player.health = health;

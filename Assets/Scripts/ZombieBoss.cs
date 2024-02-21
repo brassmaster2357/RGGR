@@ -112,7 +112,7 @@ public class ZombieBoss : MonoBehaviour
         //if collide with player, deal damage
         if (collision.gameObject.tag == "Player")
         {
-            player.Damage(damage);
+            player.Damage(damage,myRB.velocity,4);
         }
         // if collide with wall, get stunned
         if (collision.gameObject.tag == "Walls" && isCharging && myRB.velocity.magnitude >= 3)

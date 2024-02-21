@@ -213,7 +213,7 @@ public class MummyBoss : MonoBehaviour
         //if collide with player, deal damage
         if (collision.gameObject.tag == "Player")
         {
-            player.Damage(damage);
+            player.Damage(damage,myRB.velocity,2);
         }
     }
     private void OnDestroy()

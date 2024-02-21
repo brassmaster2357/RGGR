@@ -36,7 +36,7 @@ public class HUDControl : MonoBehaviour
         poweringUpScreen.enabled = false;
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         gm = GameObject.Find("GameManagr").GetComponent<GameManager>();
-        healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
+        healthBarEmpty.rectTransform.sizeDelta = new(pc.maxHealth * 50, 100);
     }
 
     private void Update()
@@ -50,7 +50,7 @@ public class HUDControl : MonoBehaviour
     void FixedUpdate()
     {
         healthBar.rectTransform.sizeDelta = new(pc.health * 50, 100);
-        healthBarEmpty.rectTransform.sizeDelta = new(pc.healthMax * 50, 100);
+        healthBarEmpty.rectTransform.sizeDelta = new(pc.maxHealth * 50, 100);
 
         if (delayedCash != pc.cash)
         {
@@ -129,13 +129,13 @@ public class HUDControl : MonoBehaviour
             {
                 case StatMod.EStat.Health:
                     int temp = (int)modifier.mods[i];
-                    pc.healthMax += temp;
+                    pc.maxHealth += temp;
                     if (Mathf.Sign(temp) == -1)
                     {
-                        if (pc.healthMax < 1)
-                            pc.healthMax = 1;
-                        if (pc.health >= pc.healthMax)
-                            pc.health = pc.healthMax;
+                        if (pc.maxHealth < 1)
+                            pc.maxHealth = 1;
+                        if (pc.health >= pc.maxHealth)
+                            pc.health = pc.maxHealth;
                     } else
                         pc.health += temp;
                     break;

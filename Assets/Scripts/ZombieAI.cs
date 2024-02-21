@@ -51,7 +51,7 @@ public class ZombieAI : MonoBehaviour
         //if collide with player, deal damage
         if (collision.gameObject.tag == "Player")
         {
-            player.Damage(damage);
+            player.Damage(damage,myRB.velocity,1);
         }
     }
     private void OnDestroy()

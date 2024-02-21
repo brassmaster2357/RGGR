@@ -84,7 +84,7 @@ public class MummyAI : MonoBehaviour
         //if collide with player, deal damage
         if (collision.gameObject.tag == "Player")
         {
-            player.Damage(damage);
+            player.Damage(damage,myRB.velocity);
         }
     }
     private void OnDestroy()

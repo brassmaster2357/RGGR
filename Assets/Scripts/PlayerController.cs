@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 6;
     public float cooldownBase = 0.25f;
     public float bulletVelocity = 1000;
-    public int healthMax = 6;
     public float invulMax = 1;
 
     public float damage = 1;
@@ -250,22 +249,23 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Arrow"))
         {
-            Damage(1);
+            Damage(1,collision.gameObject.GetComponent<Rigidbody2D>().velocity);
         }
         if (collision.gameObject.CompareTag("Beeg Arrow"))
         {
-            Damage(1);
+            Damage(1, collision.gameObject.GetComponent<Rigidbody2D>().velocity, 2);
         }
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, Vector2 angle, float knockback = 1)
     {
-        playerHitSound.Play();
         if (invul <= 0)
         {
+            playerHitSound.Play();
             cam.InitiateCameraShake(damage);
             health -= damage;
             invul = 1 * invulMax;
+            rb.velocity = angle * knockback;
         }
     }
 }
