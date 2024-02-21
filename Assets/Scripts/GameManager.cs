@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().buildIndex == 7)
                 {
-                    SceneManager.LoadScene(1); // Don't overwrite the player, but this time on purpose!
+                    SceneManager.LoadScene(2); // Don't overwrite the player, but this time on purpose!
                 }
             }
         }
