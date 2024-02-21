@@ -17,11 +17,11 @@ public class Arrow : MonoBehaviour
         {
             FIRE = false;
             transform.position = startPos;
+            if (targetPlayer)
+                direction = GameObject.Find("Player").transform.position;
             float angle = Mathf.Atan2((direction.y - transform.position.y), (direction.x - transform.position.x)) * Mathf.Rad2Deg - 90;
             transform.rotation = Quaternion.Euler(0, 0, angle);
             direction = (direction - startPos).normalized * speed;
-            if (targetPlayer)
-                direction = GameObject.Find("Player").transform.position;
             StartCoroutine(ShootDelay());
         }
     }

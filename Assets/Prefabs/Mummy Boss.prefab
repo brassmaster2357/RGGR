@@ -172,7 +172,7 @@ MonoBehaviour:
   enemyHitSound: {fileID: -8312414398881359772}
   deathSoundEmitter: {fileID: 5288547248218548337, guid: ac5d886ec8c52044eab5c5fb5147a7e3, type: 3}
   speed: 20
-  health: 60
+  health: 100
   damage: 2
   chargeUpTime: 1
   chargeSpeed: 1400

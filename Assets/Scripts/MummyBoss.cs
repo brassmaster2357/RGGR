@@ -212,9 +212,6 @@ public class MummyBoss : MonoBehaviour
         {
             health -= player.damage * 1.5f;
             enemyHitSound.Play();
-            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force * player.knockback * 1/2);
-            Destroy(collision.gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

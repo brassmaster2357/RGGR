@@ -176,9 +176,6 @@ public class SkeletonBoss : MonoBehaviour
         {
             health -= PC.damage * 1.5f;
             enemyHitSound.Play();
-            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
-            Destroy(collision.gameObject);
         }
     }
 
@@ -215,11 +212,8 @@ public class SkeletonBoss : MonoBehaviour
             case 1:
                 pattern = pattern1;
                 break;
-            case 2:
-                pattern = pattern2;
-                break;
             default:
-                pattern = pattern3;
+                pattern = pattern2;
                 break;
         }
         foreach (Arrow arrow in pattern)
@@ -229,6 +223,7 @@ public class SkeletonBoss : MonoBehaviour
             Arrow myA = gameObject.GetComponent<Arrow>();
             myA.startPos = arrow.startPos;
             myA.direction = arrow.direction;
+            myA.targetPlayer = arrow.targetPlayer;
             myA.speed = arrow.speed;
             myA.waitTime = arrow.waitTime;
             myA.FIRE = true;

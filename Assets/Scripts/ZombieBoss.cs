@@ -96,8 +96,6 @@ public class ZombieBoss : MonoBehaviour
         if (collision.gameObject.tag == "Projectile" )
         {
             health -= 1 * dmgReduct;
-            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force * player.knockback);
             Destroy(collision.gameObject);
             enemyHitSound.Play();
             if (Random.Range(0f,1f) >= 0.985f)
@@ -111,9 +109,6 @@ public class ZombieBoss : MonoBehaviour
         {
             health -= player.damage * 1.5f;
             enemyHitSound.Play();
-            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force * player.knockback * 1/2);
-            Destroy(collision.gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -124,7 +119,7 @@ public class ZombieBoss : MonoBehaviour
             player.Damage(damage,myRB.velocity,4);
         }
         // if collide with wall, get stunned
-        if (collision.gameObject.tag == "Walls" && isCharging && myRB.velocity.magnitude >= 3)
+        if (collision.gameObject.tag == "Walls" && isCharging && myRB.velocity.magnitude >= 2)
         {
             isCharging = false;
             dmgReduct = 1;

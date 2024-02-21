@@ -100,7 +100,6 @@ public class SkeletonAI : MonoBehaviour
             enemyHitSound.Play();
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
-            Destroy(collision.gameObject);
         }
     }
 
