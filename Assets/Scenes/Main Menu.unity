@@ -2299,9 +2299,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041234277}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 2041234280}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2495,6 +2495,11 @@ RectTransform:
 --- !u!1 &2041234277 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 918957155292041286, guid: f244e342d24f04c408c97e1ecca490c6, type: 3}
+  m_PrefabInstance: {fileID: 2041234275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &2041234280 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 918957155292041290, guid: f244e342d24f04c408c97e1ecca490c6, type: 3}
   m_PrefabInstance: {fileID: 2041234275}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &918957154378984898
