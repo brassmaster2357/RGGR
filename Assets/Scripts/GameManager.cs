@@ -24,10 +24,10 @@ public class GameManager : MonoBehaviour
         {
             onMenu = true;
         }
-        if (SceneManager.GetActiveScene().buildIndex >= 7)
+        if (SceneManager.GetActiveScene().buildIndex >= 8)
         {
             gameOverScreen = true;
-            if (SceneManager.GetActiveScene().buildIndex == 7)
+            if (SceneManager.GetActiveScene().buildIndex == 8)
             {
                 GameObject.Find("Score Text").GetComponent<TextMeshProUGUI>().text = ((int)playerStatCarryOver.cash).ToString();
             }
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
             }
             if (controller.yButton.wasPressedThisFrame)
             {
-                if (SceneManager.GetActiveScene().buildIndex == 7)
+                if (SceneManager.GetActiveScene().buildIndex == 8)
                 {
                     SceneManager.LoadScene(2); // Don't overwrite the player, but this time on purpose!
                 }
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         playerStatCarryOver.Reset();
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene(9);
         Time.timeScale = 1;
         paused = false;
     }
