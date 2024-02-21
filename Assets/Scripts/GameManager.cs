@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
                 else
                     credits.SetActive(true);
             }
+            if (controller.yButton.wasPressedThisFrame)
+            {
+                if (SceneManager.GetActiveScene().buildIndex == 7)
+                {
+                    SceneManager.LoadScene(1); // Don't overwrite the player, but this time on purpose!
+                }
+            }
         }
     }
 

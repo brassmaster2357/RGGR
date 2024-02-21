@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2911053265004967689}
   - component: {fileID: -4545923206222856199}
   - component: {fileID: 5450949670435733305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Money
   m_TagString: Money
   m_Icon: {fileID: 0}

@@ -200,10 +200,11 @@ public class MummyBoss : MonoBehaviour
             Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             myRB.AddForce(force * player.knockback * 1 / 2);
             Destroy(collision.gameObject);
-			if (Random.Range(0f,1f) >= 0.985f)
+            enemyHitSound.Play();
+            if (Random.Range(0f,1f) >= 0.985f)
 			{
 				GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
-				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, -2.5f), Random.Range(-2.5f, -2.5f));
+				heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 2.5f));
 			}
         }
     }
@@ -224,6 +225,11 @@ public class MummyBoss : MonoBehaviour
         {
             GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
             coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-7.5f, 7.5f));
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
+            heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-7.5f, 7.5f));
         }
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject deathTarget in enemies)
