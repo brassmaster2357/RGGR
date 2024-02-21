@@ -15,6 +15,7 @@ TagManager:
   - Staircase
   - Beeg Arrow
   - Enemy
+  - Whip
   layers:
   - Default
   - TransparentFX
