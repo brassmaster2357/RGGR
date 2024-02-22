@@ -13,6 +13,7 @@ public class SkeletonAI : MonoBehaviour
     SpriteControl spriteControl;
 
     public AudioSource enemyHitSound;
+    public AudioSource shootSound;
     public GameObject deathSoundEmitter;
 
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
@@ -124,6 +125,7 @@ public class SkeletonAI : MonoBehaviour
     void Shoot()
     {
         // make an arrow, rotate it, and send it
+        shootSound.Play();
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0,0,angle);

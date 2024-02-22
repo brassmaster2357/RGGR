@@ -13,6 +13,7 @@ public class SkeletonBoss : MonoBehaviour
     SpriteControl spriteControl;
 
     public AudioSource enemyHitSound;
+    public AudioSource shootSound;
     public GameObject deathSoundEmitter;
 
     // Set waypoints in inspector to set patrol, leave empty for sentry mode
@@ -182,6 +183,7 @@ public class SkeletonBoss : MonoBehaviour
     void Shoot()
     {
         // make an arrow, rotate it, and send it
+        shootSound.Play();
         GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
         float angle = Mathf.Atan2((target.transform.position.y - transform.position.y), (target.transform.position.x - transform.position.x)) * Mathf.Rad2Deg - 90;
         arrow.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -197,11 +199,6 @@ public class SkeletonBoss : MonoBehaviour
         {
             GameObject coin = Instantiate(money, transform.position, Quaternion.identity);
             coin.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-7.5f, 7.5f));
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            GameObject heart = Instantiate(heartPickup, transform.position, Quaternion.identity);
-            heart.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-7.5f, 7.5f), Random.Range(-7.5f, 7.5f));
         }
     }
     void BulletHell()
