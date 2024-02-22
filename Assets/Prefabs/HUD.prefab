@@ -1311,6 +1311,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ca6fae017623a649951b7db2f66594d, type: 2}
   - {fileID: 11400000, guid: 71163e76898035746928bd86d33d3d04, type: 2}
   - {fileID: 11400000, guid: fcfff54d96665844494c6dc2b34aec25, type: 2}
+  - {fileID: 11400000, guid: ddda44719ace55540947b932aefda6b7, type: 2}
   leftMod: {fileID: 0}
   rightMod: {fileID: 0}
   leftImage: {fileID: 4039475961355951840}
