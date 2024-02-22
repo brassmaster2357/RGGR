@@ -79,7 +79,7 @@ public class SkeletonAI : MonoBehaviour
             timer += Time.deltaTime;
         else
         {
-            timer = 0;
+            timer = Random.Range(-0.2f,0.2f);
             Shoot();
         }
     }
