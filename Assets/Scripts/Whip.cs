@@ -17,11 +17,11 @@ public class Whip : MonoBehaviour
     {
         if (whipDirection == WhipDirection.Up)
         {
-            transform.position = new Vector3(Player.position.x, Player.position.y + 1.1f, 0);
+            transform.position = new Vector3(Player.position.x, Player.position.y + 0.6f, 0);
         }
         else if (whipDirection == WhipDirection.Down)
         {
-            transform.position = new Vector3(Player.position.x, Player.position.y - 1.1f, 0);
+            transform.position = new Vector3(Player.position.x, Player.position.y - 1.7f, 0);
         }
         else if (whipDirection == WhipDirection.Left)
         {

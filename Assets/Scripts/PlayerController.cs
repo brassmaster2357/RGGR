@@ -164,8 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Money"))
         {
-            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
-            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
+            cash += Random.Range(50 * moneyMult, 200 * moneyMult);
             GameObject coinSoundObj = Instantiate(coinSoundPrefab, transform);
             AudioSource coinSound = coinSoundObj.GetComponent<AudioSource>();
             coinSound.pitch = Random.Range(0.85f, 1.15f);
