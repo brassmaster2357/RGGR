@@ -11,6 +11,8 @@ public class MummyBoss : MonoBehaviour
     public GameObject mummy;
 
     public AudioSource enemyHitSound;
+    public AudioSource chargeSound;
+    public AudioSource summonSound;
     public GameObject deathSoundEmitter;
 
     GameObject target;
@@ -78,6 +80,7 @@ public class MummyBoss : MonoBehaviour
             else
             {
                 // cha-cha real smooth
+                summonSound.Play();
                 if (up)
                 {
                     myRB.AddForce((topSpot - (Vector2)transform.position).normalized * speed * 2);
@@ -147,6 +150,7 @@ public class MummyBoss : MonoBehaviour
                 {
                     // Lunge
                     timer = 0;
+                    chargeSound.Play();
                     myRB.AddForce((target.transform.position - transform.position).normalized * chargeSpeed);
                     charging = false;
                 }

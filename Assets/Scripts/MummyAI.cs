@@ -11,6 +11,7 @@ public class MummyAI : MonoBehaviour
     Rigidbody2D myRB;
 
     public AudioSource enemyHitSound;
+    public AudioSource chargeSound;
     public GameObject deathSoundEmitter;
 
     public float speed;
@@ -44,6 +45,7 @@ public class MummyAI : MonoBehaviour
             {
                 // Lunge
                 timer = 0;
+                chargeSound.Play();
                 myRB.AddForce((target.transform.position - transform.position).normalized * chargeSpeed);
                 charging = false;
             }

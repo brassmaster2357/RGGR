@@ -215,6 +215,7 @@ public class PlayerController : MonoBehaviour
     {
         if (rollDelay <= 0)
         {
+            dashrollSound.Play();
             rb.AddForce(225 * maxSpeed * leftStick.normalized);
             invul = 0.55f * invulMax;
             rollDelay = 2.5f;
@@ -226,6 +227,7 @@ public class PlayerController : MonoBehaviour
         if (!canWhip)
             yield break;
         canWhip = false;
+        whipSound.Play();
         string dir = "";
         Transform whipObject;
         Debug.Log("https://www.youtube.com/watch?v=nfVEvgWd4ek");
