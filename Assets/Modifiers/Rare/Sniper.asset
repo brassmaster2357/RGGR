@@ -16,9 +16,17 @@ MonoBehaviour:
   description:
   - x2 Bullet Damage
   - x2 Bullet Speed
+<<<<<<< Updated upstream
   - x1.5 Firing Cooldown
+=======
+  - x2 Firing Cooldown
+>>>>>>> Stashed changes
   stats: 030000000400000005000000
   mods:
   - 2
   - 2
+<<<<<<< Updated upstream
   - 1.5
+=======
+  - 2
+>>>>>>> Stashed changes

@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
+<<<<<<< Updated upstream
   - +1 Heart
+=======
+  - +0.5 Hearts
+>>>>>>> Stashed changes
   stats: 00000000
   mods:
   - 1

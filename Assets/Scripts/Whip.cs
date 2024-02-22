@@ -1,5 +1,6 @@
 using UnityEngine;
 
+<<<<<<< Updated upstream
 public enum WhipDirection
 {
     Up,
@@ -34,6 +35,11 @@ public class Whip : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+=======
+public class Whip : MonoBehaviour
+{
+   private void OnCollisionEnter2D(Collision2D collision)
+>>>>>>> Stashed changes
     {
         Debug.Log(collision.gameObject.name);
         //if collide with enemy, deal damage
