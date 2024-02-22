@@ -51,6 +51,7 @@ public class ZombieAI : MonoBehaviour
         {
             Debug.Log("Whip");
             health -= player.damage * 1.5f;
+<<<<<<< Updated upstream
             switch (collision.gameObject.name) // knockback depending on whip direction
             {
                 case "left":
@@ -71,6 +72,8 @@ public class ZombieAI : MonoBehaviour
                     break;
             }
             Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision); // don't get hit twice in a row with the same attack, because that's possible apparently
+=======
+>>>>>>> Stashed changes
             enemyHitSound.Play();
         }
 
