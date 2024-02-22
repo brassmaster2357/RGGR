@@ -98,7 +98,6 @@ public class SkeletonAI : MonoBehaviour
         {
             health -= PC.damage * 1.5f;
             enemyHitSound.Play();
-<<<<<<< Updated upstream
             switch (collision.gameObject.name) // knockback depending on whip direction
             {
                 case "left":
@@ -119,10 +118,6 @@ public class SkeletonAI : MonoBehaviour
                     break;
             }
             Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision); // don't get hit twice in a row with the same attack, because that's possible apparently
-=======
-            Vector2 force = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
-            myRB.AddForce(force.normalized * force.magnitude * PC.knockback);
->>>>>>> Stashed changes
         }
     }
 

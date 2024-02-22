@@ -166,12 +166,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Money"))
         {
-<<<<<<< Updated upstream
             cash += Random.Range(50 * moneyMult, 200 * moneyMult);
-=======
-            float completelyUselessVariableName = collision.gameObject.transform.localScale.x * 100;
-            cash += Random.Range(completelyUselessVariableName / 2, completelyUselessVariableName * 2);
->>>>>>> Stashed changes
             GameObject coinSoundObj = Instantiate(coinSoundPrefab, transform);
             AudioSource coinSound = coinSoundObj.GetComponent<AudioSource>();
             coinSound.pitch = Random.Range(0.85f, 1.15f);
@@ -235,25 +230,14 @@ public class PlayerController : MonoBehaviour
         Transform whipObject;
         Debug.Log("https://www.youtube.com/watch?v=nfVEvgWd4ek");
         if (rightStick != Vector2.zero){
-<<<<<<< Updated upstream
             if (Mathf.Abs(rightStick.x) > Mathf.Abs(rightStick.y))
-=======
-            if (rightStick == Vector2.zero){
-                dir = "down";
-            }
-            else if (Mathf.Abs(rightStick.x) > Mathf.Abs(rightStick.y))
->>>>>>> Stashed changes
             {
                 if (rightStick.x > 0)
                     dir = "right";
                 else if (rightStick.x < 0)
                     dir = "left";
             }
-<<<<<<< Updated upstream
             else if (Mathf.Abs(rightStick.y) >= Mathf.Abs(rightStick.x))
-=======
-            else if (Mathf.Abs(rightStick.y) > Mathf.Abs(rightStick.x))
->>>>>>> Stashed changes
             {
                 if (rightStick.y > 0)
                     dir = "up";
@@ -272,11 +256,7 @@ public class PlayerController : MonoBehaviour
                 else if (leftStick.x < 0)
                     dir = "left";
             }
-<<<<<<< Updated upstream
             else if (Mathf.Abs(leftStick.y) >= Mathf.Abs(leftStick.x))
-=======
-            else if (Mathf.Abs(leftStick.y) > Mathf.Abs(leftStick.x))
->>>>>>> Stashed changes
             {
                 if (leftStick.y > 0)
                     dir = "up";
