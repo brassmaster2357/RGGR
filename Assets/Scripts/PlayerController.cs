@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource playerHitSound;
     public AudioSource fireSound;
+    public AudioSource whipSound;
+    public AudioSource dashrollSound;
     public GameObject coinSoundPrefab;
 
     public float maxSpeed = 8f;
