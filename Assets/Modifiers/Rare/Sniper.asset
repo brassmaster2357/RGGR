@@ -16,9 +16,9 @@ MonoBehaviour:
   description:
   - x2 Bullet Damage
   - x2 Bullet Speed
-  - x2 Firing Cooldown
+  - x1.5 Firing Cooldown
   stats: 030000000400000005000000
   mods:
   - 2
   - 2
-  - 2
+  - 1.5

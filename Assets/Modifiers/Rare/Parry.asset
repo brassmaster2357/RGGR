@@ -15,8 +15,8 @@ MonoBehaviour:
   art: {fileID: 0}
   description:
   - +1.5 sec Invulnerability
-  - -30% Damage
+  - -20% Damage
   stats: 0200000003000000
   mods:
   - 1.5
-  - 0.7
+  - 0.8

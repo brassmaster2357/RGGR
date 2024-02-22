@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +1.5 Hearts
-  - -10% Speed
+  - +2 Hearts
+  - -15% Speed
   stats: 0000000001000000
   mods:
-  - 3
+  - 4
   - 0.85

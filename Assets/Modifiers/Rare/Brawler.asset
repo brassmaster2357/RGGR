@@ -15,10 +15,10 @@ MonoBehaviour:
   art: {fileID: 0}
   description:
   - +3 Hearts
-  - +1 sec Invulnerability
+  - x3 Damage
   - Melee only
-  stats: 000000000200000005000000
+  stats: 000000000300000005000000
   mods:
   - 6
-  - 1
-  - 1e+9
+  - 3
+  - 1e+12

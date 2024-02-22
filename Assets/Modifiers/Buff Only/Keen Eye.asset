@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +25% Money Gained
+  - +50% Money Gained
   stats: 06000000
   mods:
-  - 1.25
+  - 1.5

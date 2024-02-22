@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +50% Money Gained
+  - +100% Money Gained
   - -1 Heart
   stats: 0600000000000000
   mods:
-  - 1.5
+  - 2
   - -2

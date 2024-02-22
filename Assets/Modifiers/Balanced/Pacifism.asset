@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +1 Heart
+  - +2 Hearts
   - -20% Damage
   stats: 0000000003000000
   mods:

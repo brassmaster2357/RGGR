@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +25% Speed
+  - +50% Speed
   - -10% Damage
   - -0.25 sec. Invulnerability
   stats: 010000000300000002000000
   mods:
-  - 1.25
+  - 1.5
   - 0.9
   - -0.25

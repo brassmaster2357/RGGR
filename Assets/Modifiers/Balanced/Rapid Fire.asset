@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d5f8aefcd28944086ccf013ff11859, type: 3}
-  m_Name: Nimble
+  m_Name: Rapid Fire
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +25% Speed
-  - -15% Damage
-  - -0.25 sec. Invulnerability
-  stats: 010000000300000002000000
+  - -50% Firing Cooldown
+  - -30% Damage
+  stats: 0500000003000000
   mods:
-  - 1.25
-  - 0.85
-  - -0.25
+  - 0.5
+  - 0.7

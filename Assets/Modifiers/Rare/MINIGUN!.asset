@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d5f8aefcd28944086ccf013ff11859, type: 3}
-  m_Name: Sell Your Soul
+  m_Name: MINIGUN!
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +50% Money Gained
-  - -1 Heart
-  stats: 0600000000000000
+  - -80% Firing Cooldown
+  - -65% Damage
+  - -20% Speed
+  stats: 050000000300000001000000
   mods:
-  - 1.5
-  - -2
+  - 0.2
+  - 0.35
+  - 0.8

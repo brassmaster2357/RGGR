@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-  - +15% Speed
+  - +25% Speed
   stats: 01000000
   mods:
-  - 1.15
+  - 1.25
