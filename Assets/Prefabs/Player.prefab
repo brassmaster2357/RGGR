@@ -28,11 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3494739054574630846}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: -1.1, z: 0}
-=======
-  m_LocalPosition: {x: 0, y: -1.84, z: 0}
->>>>>>> Stashed changes
   m_LocalScale: {x: 0.6666667, y: 2.5, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,11 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-<<<<<<< Updated upstream
   m_Sprite: {fileID: 7482667652216324306, guid: a716c0eaf1e0b324da0412caa142a893, type: 3}
-=======
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
->>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -158,11 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
     oldSize: {x: 0.9375, y: 0.9375}
-=======
-    oldSize: {x: 1, y: 1}
->>>>>>> Stashed changes
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -182,12 +171,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed542fa5561a5894688645ddabe41e8c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
+  m_EditorClassIdentifier:
   whipDirection: 1
   Player: {fileID: 1356714467524468114}
-=======
->>>>>>> Stashed changes
 --- !u!1 &5958675933139331598
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,11 +428,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< Updated upstream
   m_Sprite: {fileID: 7482667652216324306, guid: 05069ae3f64e16c4a8ec8446db732d2b, type: 3}
-=======
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
->>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -520,11 +502,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
     oldSize: {x: 0.9375, y: 0.9375}
-=======
-    oldSize: {x: 1, y: 1}
->>>>>>> Stashed changes
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -544,12 +522,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed542fa5561a5894688645ddabe41e8c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
+  m_EditorClassIdentifier:
   whipDirection: 3
   Player: {fileID: 1356714467524468114}
-=======
->>>>>>> Stashed changes
 --- !u!1 &8132026017042986411
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,17 +601,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< Updated upstream
   m_Sprite: {fileID: 7482667652216324306, guid: a716c0eaf1e0b324da0412caa142a893, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 1
-=======
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
->>>>>>> Stashed changes
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -707,11 +675,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
     oldSize: {x: 0.9375, y: 0.9375}
-=======
-    oldSize: {x: 1, y: 1}
->>>>>>> Stashed changes
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -731,12 +695,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed542fa5561a5894688645ddabe41e8c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
+  m_EditorClassIdentifier:
   whipDirection: 0
   Player: {fileID: 1356714467524468114}
-=======
->>>>>>> Stashed changes
 --- !u!1 &8191744590608488040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,17 +1379,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-<<<<<<< Updated upstream
   m_Sprite: {fileID: 7482667652216324306, guid: 05069ae3f64e16c4a8ec8446db732d2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 1
-=======
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
->>>>>>> Stashed changes
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -1499,11 +1453,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
     oldSize: {x: 0.9375, y: 0.9375}
-=======
-    oldSize: {x: 1, y: 1}
->>>>>>> Stashed changes
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1523,12 +1473,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed542fa5561a5894688645ddabe41e8c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
+  m_EditorClassIdentifier:
   whipDirection: 2
   Player: {fileID: 1356714467524468114}
-=======
->>>>>>> Stashed changes
 --- !u!1 &8557775448327704667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,11 +1500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8557775448327704667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
-=======
-  m_LocalPosition: {x: 0, y: 1.27, z: 0}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

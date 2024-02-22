@@ -14,14 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   art: {fileID: 0}
   description:
-<<<<<<< Updated upstream
   - +50% Money Gained
   stats: 06000000
   mods:
   - 1.5
-=======
-  - +25% Money Gained
-  stats: 06000000
-  mods:
-  - 1.25
->>>>>>> Stashed changes

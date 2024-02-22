@@ -15,7 +15,6 @@ MonoBehaviour:
   art: {fileID: 0}
   description:
   - +3 Hearts
-<<<<<<< Updated upstream
   - x3 Damage
   - Melee only
   stats: 000000000300000005000000
@@ -23,12 +22,3 @@ MonoBehaviour:
   - 6
   - 3
   - 1e+12
-=======
-  - +1 sec Invulnerability
-  - Melee only
-  stats: 000000000200000005000000
-  mods:
-  - 6
-  - 1
-  - 1e+9
->>>>>>> Stashed changes
