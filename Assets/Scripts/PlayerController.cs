@@ -229,17 +229,14 @@ public class PlayerController : MonoBehaviour
         Transform whipObject;
         Debug.Log("https://www.youtube.com/watch?v=nfVEvgWd4ek");
         if (rightStick != Vector2.zero){
-            if (rightStick == Vector2.zero){
-                dir = "down";
-            }
-            else if (Mathf.Abs(rightStick.x) > Mathf.Abs(rightStick.y))
+            if (Mathf.Abs(rightStick.x) > Mathf.Abs(rightStick.y))
             {
                 if (rightStick.x > 0)
                     dir = "right";
                 else if (rightStick.x < 0)
                     dir = "left";
             }
-            else if (Mathf.Abs(rightStick.y) > Mathf.Abs(rightStick.x))
+            else if (Mathf.Abs(rightStick.y) >= Mathf.Abs(rightStick.x))
             {
                 if (rightStick.y > 0)
                     dir = "up";
@@ -258,7 +255,7 @@ public class PlayerController : MonoBehaviour
                 else if (leftStick.x < 0)
                     dir = "left";
             }
-            else if (Mathf.Abs(leftStick.y) > Mathf.Abs(leftStick.x))
+            else if (Mathf.Abs(leftStick.y) >= Mathf.Abs(leftStick.x))
             {
                 if (leftStick.y > 0)
                     dir = "up";

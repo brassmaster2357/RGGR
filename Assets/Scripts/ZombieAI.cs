@@ -51,6 +51,26 @@ public class ZombieAI : MonoBehaviour
         {
             Debug.Log("Whip");
             health -= player.damage * 1.5f;
+            switch (collision.gameObject.name) // knockback depending on whip direction
+            {
+                case "left":
+                    myRB.AddForce(Vector2.left * player.knockback * 125);
+                    break;
+                case "right":
+                    myRB.AddForce(Vector2.right * player.knockback * 125);
+                    break;
+                case "up":
+                    myRB.AddForce(Vector2.up * player.knockback * 125);
+                    break;
+                case "down":
+                    myRB.AddForce(Vector2.down * player.knockback * 125);
+                    break;
+                default: // This should never happen
+                    Vector2 force = target.GetComponent<Rigidbody2D>().velocity;
+                    myRB.AddForce(force * player.knockback * 125);
+                    break;
+            }
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision); // don't get hit twice in a row with the same attack, because that's possible apparently
             enemyHitSound.Play();
         }
 
